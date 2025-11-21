@@ -562,24 +562,407 @@ export const QUESTIONS_DB = {
     {
       id: 1,
       question:
-        "Which sorting algorithm has the best average-case time complexity?",
+        "Which of the following best describes the goal of algorithm analysis?",
       options: [
-        "Bubble Sort",
-        "Merge Sort",
-        "Selection Sort",
-        "Insertion Sort",
+        "To determine the exact execution time on a specific machine",
+        "To compare algorithms in terms of running time and memory usage",
+        "To minimize the number of lines of code",
+        "To ensure the algorithm always produces the correct output",
       ],
       correct: 1,
       explanation:
-        "Merge Sort has O(n log n) average-case time complexity, which is optimal for comparison-based sorting algorithms.",
+        "The primary goal of algorithm analysis is to compare algorithms objectively, focusing on efficiency in terms of running time and memory usage, rather than machine-specific execution times or code length.",
     },
     {
       id: 2,
-      question: "What is the space complexity of Quick Sort?",
-      options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+      question:
+        "What does the input size generally refer to in algorithm analysis?",
+      options: [
+        "The number of variables used in the algorithm",
+        "The number of elements in the input",
+        "The number of function calls made",
+        "The total memory allocated",
+      ],
       correct: 1,
       explanation:
-        "Quick Sort requires O(log n) space for the recursive call stack in the average case.",
+        "Input size refers to the number of elements in the input, such as the size of an array or the number of vertices in a graph, and is crucial for expressing the running time as a function of input size.",
+    },
+    {
+      id: 3,
+      question:
+        "Which of the following is NOT a valid reason to use asymptotic analysis?",
+      options: [
+        "To compare algorithms independently of hardware",
+        "To determine the exact running time on a given machine",
+        "To focus on the growth rate of the algorithm",
+        "To abstract away from programming language details",
+      ],
+      correct: 1,
+      explanation:
+        "Asymptotic analysis is used to compare algorithms based on their growth rates, not to determine exact running times on specific machines, which depend on hardware and implementation details.",
+    },
+    {
+      id: 4,
+      question:
+        "Which rate of growth is dominant in the function ( f(n) = n^4 + 2n^2 + 100n + 500 )?",
+      options: ["n^4", "2n^2", "100n", "500"],
+      correct: 0,
+      explanation:
+        "For large values of n, the term with the highest degree, ( n^4 ), dominates the growth rate of the function, making it the most significant for asymptotic analysis.",
+    },
+    {
+      id: 5,
+      question:
+        "Which of the following asymptotic notations represents an upper bound?",
+      options: ["Ω", "Θ", "O", "o"],
+      correct: 2,
+      explanation:
+        "The notation O (Big-O) represents an upper bound on the growth rate of a function, indicating the worst-case scenario for an algorithm’s running time.",
+    },
+    {
+      id: 6,
+      question:
+        "Which type of algorithm analysis considers the input for which the algorithm performs the slowest?",
+      options: ["Best case", "Average case", "Worst case", "Optimal case"],
+      correct: 2,
+      explanation:
+        "Worst-case analysis examines the input that causes the algorithm to run the slowest, providing a guarantee on the maximum running time.",
+    },
+    {
+      id: 7,
+      question:
+        "What is the purpose of ignoring lower-order terms in asymptotic analysis?",
+      options: [
+        "To simplify the mathematical expression",
+        "To focus on the dominant term for large inputs",
+        "To reduce the number of operations",
+        "To make the algorithm more efficient",
+      ],
+      correct: 1,
+      explanation:
+        "Lower-order terms become insignificant as input size grows, so asymptotic analysis focuses on the dominant term to understand the algorithm’s growth rate.",
+    },
+    {
+      id: 8,
+      question: "Which step is the FIRST in the algorithm design process?",
+      options: [
+        "Testing and debugging",
+        "Understanding the problem",
+        "Analyzing complexity",
+        "Writing pseudocode",
+      ],
+      correct: 1,
+      explanation:
+        "You must first fully understand the problem before designing a solution.",
+    },
+    {
+      id: 9,
+      question:
+        "Which of the following is a common reason for multiple algorithms existing for the same problem?",
+      options: [
+        "All algorithms have identical efficiency",
+        "Different algorithms may optimize for different resources",
+        "Algorithms are only created for academic purposes",
+        "There is no way to compare algorithm efficiency",
+      ],
+      correct: 1,
+      explanation:
+        "Multiple algorithms exist because they may optimize for different resources, such as time, space, or developer effort, making some more suitable for specific situations.",
+    },
+    {
+      id: 10,
+      question: "What does the expression ( f(n) = O(g(n)) ) mean?",
+      options: [
+        "f(n) grows faster than g(n)",
+        "f(n) grows at the same rate as g(n)",
+        "f(n) grows no faster than g(n)",
+        "f(n) grows slower than g(n)",
+      ],
+      correct: 2,
+      explanation:
+        "The expression ( f(n) = O(g(n)) ) means that f(n) grows no faster than g(n), providing an upper bound on the growth rate of f(n).",
+    },
+    {
+      id: 11,
+      question: "Which asymptotic notation represents a tight bound?",
+      options: ["O", "Ω", "Θ", "o"],
+      correct: 2,
+      explanation:
+        "Θ (Theta) notation represents a tight bound, meaning the function is bounded both above and below by the same asymptotic growth rate.",
+    },
+    {
+      id: 12,
+      question:
+        "Which of the following is a typical input size for a sorting algorithm?",
+      options: [
+        "Number of comparisons made",
+        "Number of swaps performed",
+        "Number of elements in the array",
+        "Number of function calls",
+      ],
+      correct: 2,
+      explanation:
+        "For sorting algorithms, the input size is usually the number of elements in the array being sorted.",
+    },
+    {
+      id: 13,
+      question:
+        "What is the main advantage of expressing running time as a function of input size?",
+      options: [
+        "It allows comparison across different hardware platforms",
+        "It guarantees the algorithm will be correct",
+        "It ensures the algorithm uses minimal memory",
+        "It makes debugging easier",
+      ],
+      correct: 0,
+      explanation:
+        "Expressing running time as a function of input size allows for objective, hardware-independent comparison of algorithms.",
+    },
+    {
+      id: 14,
+      question: "Which of the following is true about the best-case analysis?",
+      options: [
+        "It represents the slowest possible running time",
+        "It represents the fastest possible running time",
+        "It represents the average running time",
+        "It is never used in practice",
+      ],
+      correct: 1,
+      explanation:
+        "Best-case analysis considers the input that allows the algorithm to run the fastest, representing the minimum possible running time.",
+    },
+    {
+      id: 15,
+      question:
+        "Which of the following is an example of a problem where the input size could be measured in bits?",
+      options: [
+        "Sorting an array",
+        "Searching a list",
+        "Factoring a large integer",
+        "Finding the shortest path in a graph",
+      ],
+      correct: 2,
+      explanation:
+        "For problems like factoring large integers, the input size is often measured in the number of bits in the binary representation of the input.",
+    },
+    {
+      id: 16,
+      question:
+        "Which of the following is a reason to perform average-case analysis?",
+      options: [
+        "To determine the worst possible running time",
+        "To determine the best possible running time",
+        "To predict the expected running time for random inputs",
+        "To minimize memory usage",
+      ],
+      correct: 2,
+      explanation:
+        "Average-case analysis predicts the expected running time when inputs are chosen randomly, providing insight into typical performance.",
+    },
+    {
+      id: 17,
+      question: "What does the notation ( f(n) = Omega(g(n)) ) indicate?",
+      options: [
+        "f(n) grows no faster than g(n)",
+        "f(n) grows at least as fast as g(n)",
+        "f(n) grows at the same rate as g(n)",
+        "f(n) grows slower than g(n)",
+      ],
+      correct: 1,
+      explanation:
+        "Ω (Omega) notation indicates a lower bound, meaning f(n) grows at least as fast as g(n).",
+    },
+    {
+      id: 18,
+      question:
+        "Which of the following is a valid reason to ignore constants in asymptotic analysis?",
+      options: [
+        "Constants are always negligible",
+        "Constants do not affect the growth rate for large inputs",
+        "Constants make the analysis more complicated",
+        "Constants are not part of the algorithm",
+      ],
+      correct: 1,
+      explanation:
+        "For large inputs, constants become insignificant compared to the growth rate, so they are typically ignored in asymptotic analysis.",
+    },
+    {
+      id: 19,
+      question:
+        "Which of the following best describes the purpose of pseudocode?",
+      options: [
+        "To provide a high-level description of an algorithm’s logic",
+        "To write code that can be directly executed",
+        "To minimize the number of variables used",
+        "To optimize the algorithm for speed",
+      ],
+      correct: 0,
+      explanation:
+        "Pseudocode provides a high-level, language-independent description of an algorithm’s logic, making it easier to understand and analyze.",
+    },
+    {
+      id: 20,
+      question:
+        "Which of the following is a characteristic of an efficient algorithm?",
+      options: [
+        "It always produces the correct output",
+        "It uses minimal memory and time for large inputs",
+        "It is written in the shortest possible code",
+        "It works for all possible inputs",
+      ],
+      correct: 1,
+      explanation:
+        "An efficient algorithm minimizes both time and memory usage, especially for large inputs, making it suitable for practical use.",
+    },
+    {
+      id: 21,
+      question:
+        "Which of the following is an example of a problem where the input size is the number of vertices in a graph?",
+      options: [
+        "Sorting an array",
+        "Searching a list",
+        "Finding the shortest path",
+        "Factoring an integer",
+      ],
+      correct: 2,
+      explanation:
+        "For graph problems like finding the shortest path, the input size is often the number of vertices in the graph.",
+    },
+    {
+      id: 22,
+      question: "Which of the following is true about the worst-case analysis?",
+      options: [
+        "It represents the fastest possible running time",
+        "It represents the slowest possible running time",
+        "It represents the average running time",
+        "It is always the same as the best case",
+      ],
+      correct: 1,
+      explanation:
+        "Worst-case analysis considers the input that causes the algorithm to run the slowest, providing a guarantee on the maximum running time.",
+    },
+    {
+      id: 23,
+      question:
+        "Which of the following is a reason to analyze the complexity of an algorithm?",
+      options: [
+        "To ensure the algorithm is bug-free",
+        "To compare different algorithms for the same problem",
+        "To minimize the number of lines of code",
+        "To make the algorithm easier to understand",
+      ],
+      correct: 1,
+      explanation:
+        "Analyzing complexity allows for objective comparison of different algorithms, helping to choose the most efficient one for a given problem.",
+    },
+    {
+      id: 24,
+      question:
+        "Which of the following is a typical input size for a matrix multiplication algorithm?",
+      options: [
+        "Number of rows",
+        "Number of columns",
+        "Number of elements in the matrix",
+        "Number of operations performed",
+      ],
+      correct: 2,
+      explanation:
+        "For matrix multiplication, the input size is typically the number of elements in the matrices being multiplied.",
+    },
+    {
+      id: 25,
+      question:
+        "Which of the following best describes the relationship between best, average, and worst-case running times?",
+      options: [
+        "Best case is always greater than worst case",
+        "Average case is always equal to best case",
+        "Worst case is always greater than or equal to average case",
+        "Average case is always greater than worst case",
+      ],
+      correct: 2,
+      explanation:
+        "The worst-case running time is always greater than or equal to the average-case running time, as it represents the maximum possible time for any input.",
+    },
+    {
+      id: 26,
+      question:
+        "Which of the following is a common application of asymptotic analysis?",
+      options: [
+        "Determining the exact running time on a specific machine",
+        "Comparing algorithms for efficiency",
+        "Writing pseudocode",
+        "Debugging algorithms",
+      ],
+      correct: 1,
+      explanation:
+        "Asymptotic analysis is primarily used to compare algorithms for efficiency, focusing on their growth rates rather than machine-specific details.",
+    },
+    {
+      id: 27,
+      question: "Which of the following is a reason to use Big-O notation?",
+      options: [
+        "To find the exact number of operations",
+        "To provide an upper bound on the running time",
+        "To minimize memory usage",
+        "To ensure the algorithm is correct",
+      ],
+      correct: 1,
+      explanation:
+        "Big-O notation provides an upper bound on the running time, indicating the worst-case scenario for an algorithm’s performance.",
+    },
+    {
+      id: 28,
+      question:
+        "Which of the following is a characteristic of a good algorithm design process?",
+      options: [
+        "Starting with pseudocode",
+        "Understanding the problem before designing a solution",
+        "Testing before understanding the problem",
+        "Writing code before analyzing complexity",
+      ],
+      correct: 1,
+      explanation:
+        "A good algorithm design process begins with a thorough understanding of the problem, ensuring that the solution is both correct and efficient.",
+    },
+    {
+      id: 29,
+      question:
+        "Which of the following is a typical input size for a polynomial evaluation algorithm?",
+      options: [
+        "Number of variables",
+        "Degree of the polynomial",
+        "Number of terms",
+        "Number of operations",
+      ],
+      correct: 1,
+      explanation:
+        "For polynomial evaluation, the input size is often the degree of the polynomial, which determines the number of terms to be evaluated.",
+    },
+    {
+      id: 30,
+      question:
+        "Which of the following is true about the average-case analysis?",
+      options: [
+        "It represents the worst possible running time",
+        "It represents the best possible running time",
+        "It represents the expected running time for random inputs",
+        "It is never used in practice",
+      ],
+      correct: 2,
+      explanation:
+        "Average-case analysis represents the expected running time when inputs are chosen randomly, providing insight into typical performance rather than best or worst cases.",
+    },
+    {
+      id: 31,
+      question:
+        "هل معاذ ومصطفى اب اشرف عبط؟",
+      options: [
+        "نعم",
+        "لا",
+      ],
+      correct: 1,
+      explanation:
+        "Average-case analysis represents the expected running time when inputs are chosen randomly, providing insight into typical performance rather than best or worst cases.",
     },
   ],
   "ds-chapter-1": [
