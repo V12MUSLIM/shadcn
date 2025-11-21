@@ -40,7 +40,7 @@ export const SUBJECTS_DATA = {
       },
       {
         id: "algo-chapter-2",
-        title: "Sorting Algorithms",
+        title: "Algorithm Ch-2",
         description: "Merge sort, quick sort, and more",
       },
     ],
