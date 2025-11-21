@@ -960,9 +960,9 @@ export const QUESTIONS_DB = {
         "نعم",
         "لا",
       ],
-      correct: 1,
+      correct: 0,
       explanation:
-        "Average-case analysis represents the expected running time when inputs are chosen randomly, providing insight into typical performance rather than best or worst cases.",
+        "في حاجة غلط في دماغمهم الجماعة دول!",
     },
   ],
   "ds-chapter-1": [
