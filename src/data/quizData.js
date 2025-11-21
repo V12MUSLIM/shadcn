@@ -181,96 +181,92 @@ export const QUESTIONS_DB = {
   "algo-chapter-1": [
     {
       id: 1,
-      question: "What is the correct definition of an algorithm?",
-      options: [
-        "A set of ambiguous steps that solve a problem",
-        "A finite sequence of clear steps to solve a problem for all valid inputs",
-        "Any code written in a programming language",
-        "A diagram that represents program flow",
-      ],
-      correct: 1,
+      question:
+        "Which of the following is NOT a required characteristic of an algorithm?",
+      options: ["Definiteness", "Finiteness", "Recursiveness", "Effectiveness"],
+      correct: 2,
       explanation:
-        "An algorithm is a finite sequence of unambiguous steps applicable to all valid inputs.",
+        "The five essential characteristics of an algorithm are Input, Output, Definiteness, Finiteness, and Effectiveness. Recursiveness is not a required property.",
     },
-
     {
       id: 2,
       question:
-        "Which of the following is NOT one of the characteristics of an algorithm?",
-      options: ["Finiteness", "Effectiveness", "Ambiguity", "Definiteness"],
+        "What is the primary advantage of using pseudocode over natural language descriptions?",
+      options: [
+        "It can be executed directly by a computer",
+        "It is completely unambiguous",
+        "It focuses on logic while abstracting away programming details",
+        "It is easier for beginners to understand",
+      ],
       correct: 2,
       explanation:
-        "Algorithms must have definite, effective, finite steps; ambiguity is not allowed.",
+        "Pseudocode uses a structured, programming-like style that focuses on logic without worrying about exact syntax, making it ideal for algorithm design.",
     },
-
     {
       id: 3,
-      question: "What does 'finiteness' mean in an algorithm?",
+      question:
+        "According to the definiteness property, what must be true about each step in an algorithm?",
       options: [
-        "The algorithm eventually stops",
-        "The algorithm accepts infinite inputs",
-        "The algorithm must run fast",
-        "The algorithm must use little memory",
+        "It must execute in constant time",
+        "It must be precisely and clearly defined with no ambiguity",
+        "It must use only basic arithmetic operations",
+        "It must be reversible",
       ],
-      correct: 0,
+      correct: 1,
       explanation:
-        "Finiteness means the algorithm terminates after a finite number of steps.",
+        "Definiteness requires that each step must be precisely and clearly defined, leaving no ambiguity about what needs to be done.",
     },
-
     {
       id: 4,
       question:
-        "Which representation of an algorithm is most prone to being ambiguous?",
-      options: [
-        "Flowchart",
-        "Pseudocode",
-        "Natural language",
-        "Programming code",
-      ],
+        "In a flowchart, which shape is used to represent decision points?",
+      options: ["Rectangle", "Oval", "Diamond", "Circle"],
       correct: 2,
-      explanation: "Natural language can introduce ambiguity.",
+      explanation:
+        "Diamonds are used for decisions in flowcharts, while ovals represent Start/End and rectangles represent processes.",
     },
-
     {
       id: 5,
       question:
-        "Which of the following uses standard symbols such as rectangles, diamonds, and ovals?",
+        "What is the fundamental difference between an algorithm and a program?",
       options: [
-        "Flowcharts",
-        "Pseudocode",
-        "Natural language",
-        "Mathematical notation",
+        "An algorithm is faster than a program",
+        "An algorithm is language-independent while a program is a specific implementation",
+        "A program is more efficient than an algorithm",
+        "An algorithm can only be written in pseudocode",
       ],
-      correct: 0,
+      correct: 1,
       explanation:
-        "Flowcharts visually represent processes using standard shapes.",
+        "An algorithm is a conceptual, language-independent procedure, while a program is a specific implementation written in a programming language.",
     },
-
     {
       id: 6,
       question:
-        "Why is pseudocode considered more effective than natural language?",
+        "Which algorithm design technique involves making locally optimal choices at each step?",
       options: [
-        "It is executable on computers directly",
-        "It is more precise and avoids ambiguity",
-        "It produces visual diagrams automatically",
-        "It is faster to write than code",
+        "Dynamic programming",
+        "Divide and conquer",
+        "Greedy algorithms",
+        "Brute force",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Pseudocode expresses logic precisely without the ambiguity of natural language.",
+        "Greedy algorithms make locally optimal choices at each step with the hope of finding a global optimum.",
     },
-
     {
       id: 7,
       question:
-        "Which property ensures every step in an algorithm is clear and unambiguous?",
-      options: ["Effectiveness", "Definiteness", "Completeness", "Optimality"],
-      correct: 1,
+        "What is the purpose of proving correctness in the algorithm design process?",
+      options: [
+        "To determine time complexity",
+        "To translate pseudocode into code",
+        "To show that the algorithm works for all valid inputs",
+        "To optimize memory usage",
+      ],
+      correct: 2,
       explanation:
-        "Definiteness means all steps are clearly defined and unambiguous.",
+        "Proving correctness ensures that the algorithm works correctly for all valid inputs and helps avoid hidden logical errors.",
     },
-
     {
       id: 8,
       question: "Which step is the FIRST in the algorithm design process?",
@@ -284,176 +280,282 @@ export const QUESTIONS_DB = {
       explanation:
         "You must first fully understand the problem before designing a solution.",
     },
-
     {
       id: 9,
-      question: "What is the main purpose of proving algorithm correctness?",
+      question:
+        "In the linear search algorithm, what is returned when the target value is not found?",
       options: [
-        "To ensure the algorithm runs fast",
-        "To show it works for all valid inputs",
-        "To reduce memory usage",
-        "To simplify implementation",
+        "The last element in the list",
+        "An error message",
+        '"Not found"',
+        "The index -1",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Correctness ensures the algorithm always produces the right output.",
+        'According to the linear search algorithm provided, if we reach the end of the list without finding the target, we return "Not found".',
     },
-
     {
       id: 10,
       question:
-        "Which of the following is used to measure how running time grows with the size of input?",
+        "What is the initial value of 'max' in the maximum-finding algorithm?",
       options: [
-        "Space complexity",
-        "Time complexity",
-        "Correctness proof",
-        "Flowcharting",
+        "Zero",
+        "The last element in the list",
+        "Negative infinity",
+        "The first element in the list",
       ],
-      correct: 1,
+      correct: 3,
       explanation:
-        "Time complexity analyzes how runtime scales with input size.",
+        "The algorithm initializes max to the first element in the list, then compares subsequent elements to update it.",
     },
-
     {
       id: 11,
       question:
-        "Which algorithm design technique divides a problem into smaller subproblems?",
+        "Which of the following best describes the 'finiteness' property of algorithms?",
       options: [
-        "Greedy approach",
-        "Dynamic programming",
-        "Brute force",
-        "Divide and conquer",
+        "The algorithm must have a finite number of variables",
+        "The algorithm must terminate after a finite number of steps",
+        "The algorithm must process finite input",
+        "The algorithm must use finite memory",
       ],
-      correct: 3,
-      explanation: "Divide and conquer splits problems into smaller parts.",
+      correct: 1,
+      explanation:
+        "Finiteness means the algorithm must terminate after a finite number of steps and should not go into an infinite loop.",
     },
-
     {
       id: 12,
       question:
-        "Which algorithm representation is most suitable for developers?",
+        "What is the main disadvantage of representing algorithms using flowcharts?",
       options: [
-        "Pseudocode",
-        "Programming code",
-        "Natural language",
-        "Flowchart",
+        "They cannot show decision points",
+        "They are difficult for beginners to understand",
+        "They can get messy for complex algorithms",
+        "They cannot represent loops",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Developers use executable programming code for implementation.",
+        "While flowcharts are very intuitive and help visualize processes, they can become messy and difficult to manage for complex algorithms.",
     },
-
     {
       id: 13,
-      question: "What is the main advantage of flowcharts?",
-      options: [
-        "They can be executed by the computer",
-        "They visually display control flow clearly",
-        "They require no symbols",
-        "They replace pseudocode entirely",
-      ],
+      question:
+        "In the factorial algorithm, what is the initial value of 'result'?",
+      options: ["0", "1", "n", "2"],
       correct: 1,
       explanation:
-        "Flowcharts are intuitive visual tools to show flow of control.",
+        "The result is initialized to 1 because factorial is computed through multiplication, and 1 is the multiplicative identity.",
     },
-
     {
       id: 14,
       question:
-        "Which step in algorithm design usually comes AFTER writing pseudocode?",
+        "Which representation of an algorithm is most suitable for immediate execution by a computer?",
       options: [
-        "Testing and debugging",
-        "Proving correctness",
-        "Implementation",
-        "Understanding the problem",
+        "Natural language description",
+        "Pseudocode",
+        "Flowchart",
+        "Programming code",
       ],
-      correct: 2,
-      explanation: "After pseudocode, the next typical step is implementation.",
+      correct: 3,
+      explanation:
+        "Programming code written in languages like Python, C++, or Java can be executed immediately by a computer, unlike other representations.",
     },
-
     {
       id: 15,
-      question: "Which example best describes an algorithm?",
+      question: "What does the 'effectiveness' property of algorithms require?",
       options: [
-        "A Python program",
-        "A step-by-step method for finding the largest number in a list",
-        "A class definition",
-        "A computer’s hardware instruction",
+        "The algorithm must run in polynomial time",
+        "All operations must be basic enough to be carried out exactly and within finite time",
+        "The algorithm must use minimum memory",
+        "The algorithm must be parallelizable",
       ],
       correct: 1,
       explanation:
-        "An algorithm is a conceptual, language-independent set of steps.",
+        "Effectiveness requires that all operations must be basic enough to be carried out exactly and within a finite amount of time.",
     },
-
     {
       id: 16,
       question:
-        "Which component of algorithm analysis focuses on memory usage?",
-      options: [
-        "Space complexity",
-        "Time complexity",
-        "Correctness",
-        "Definiteness",
-      ],
-      correct: 0,
-      explanation: "Space complexity measures memory consumption.",
+        "According to the document, what did people who followed algorithms perform calculations before electronic computers were called?",
+      options: ["Calculators", "Programmers", "Computers", "Mathematicians"],
+      correct: 2,
+      explanation:
+        "Historically, before electronic computers existed, people who followed algorithms to perform calculations were called 'computers'.",
     },
-
     {
       id: 17,
-      question: "Why is testing NOT enough to guarantee correctness?",
-      options: [
-        "It is slow",
-        "It cannot cover all possible valid inputs",
-        "It requires pseudocode first",
-        "It is not used in algorithm design",
-      ],
+      question:
+        "Which core algorithm component involves arithmetic and logical operations?",
+      options: ["Input", "Computation", "Selection", "Iteration"],
       correct: 1,
       explanation:
-        "Testing checks some cases; correctness proofs cover all cases.",
+        "Computation is the core component that involves arithmetic and logical operations in an algorithm.",
     },
-
     {
       id: 18,
       question:
-        "Which algorithm example in the lecture uses a loop from 2 to n?",
+        "In the algorithm design process, what should be determined during the 'Analyzing Efficiency' step?",
       options: [
-        "Finding maximum in a list",
-        "Factorial calculation",
-        "Linear search",
-        "Euclidean GCD",
+        "The correctness of the algorithm",
+        "The programming language to use",
+        "Time and space complexity",
+        "The input format",
       ],
-      correct: 1,
-      explanation: "Factorial algorithm multiplies numbers from 2 to n.",
+      correct: 2,
+      explanation:
+        "During efficiency analysis, we determine both time complexity (how running time grows) and space complexity (memory usage).",
     },
-
     {
       id: 19,
       question:
-        "In the linear search algorithm, what happens if the target is not found?",
+        "What is the minimum number of outputs an algorithm must produce?",
       options: [
-        "The algorithm returns the last index",
-        "The algorithm crashes",
-        "The algorithm returns 'Not found'",
-        "The algorithm restarts",
-      ],
-      correct: 2,
-      explanation: "Linear search returns 'Not found' when target is absent.",
-    },
-
-    {
-      id: 20,
-      question:
-        "Which step in the design process involves choosing between greedy, dynamic programming, or divide-and-conquer?",
-      options: [
-        "Understanding the problem",
-        "Developing a strategy",
-        "Testing and debugging",
-        "Implementation",
+        "Zero",
+        "At least one",
+        "Exactly two",
+        "It depends on the problem",
       ],
       correct: 1,
       explanation:
-        "Developing a strategy includes selecting an appropriate method.",
+        "According to the Output characteristic, an algorithm must produce at least one output (result).",
+    },
+    {
+      id: 20,
+      question:
+        "Which best practice suggests starting with pseudocode for design before moving to implementation?",
+      options: [
+        "Target Your Audience",
+        "Validate with Math",
+        "Start Simple",
+        "Use Tools",
+      ],
+      correct: 2,
+      explanation:
+        "The 'Start Simple' best practice recommends using pseudocode for design and then code for implementation.",
+    },
+    {
+      id: 21,
+      question:
+        "In the maximum-finding algorithm, when is the variable 'max' updated?",
+      options: [
+        "After every iteration",
+        "Only at the end of the algorithm",
+        "When an element x is greater than max",
+        "When an element x is less than max",
+      ],
+      correct: 2,
+      explanation:
+        "The max variable is updated only when we find an element x that is greater than the current max value.",
+    },
+    {
+      id: 22,
+      question:
+        "What is the primary purpose of the 'Iteration and Improvement' phase in algorithm design?",
+      options: [
+        "To write the initial pseudocode",
+        "To optimize performance and handle additional edge cases",
+        "To choose the programming language",
+        "To prove correctness",
+      ],
+      correct: 1,
+      explanation:
+        "Iteration and Improvement focuses on optimizing performance, handling additional edge cases, and making code cleaner after initial implementation and testing.",
+    },
+    {
+      id: 23,
+      question:
+        "According to the input characteristic, how many inputs can an algorithm receive?",
+      options: ["Exactly one", "At least one", "Zero or more", "At least two"],
+      correct: 2,
+      explanation:
+        "The Input characteristic states that the algorithm receives zero or more inputs from a specified set.",
+    },
+    {
+      id: 24,
+      question:
+        "Which representation method is described as being 'easy for beginners to understand' but potentially 'ambiguous'?",
+      options: [
+        "Pseudocode",
+        "Flowcharts",
+        "Natural language description",
+        "Programming code",
+      ],
+      correct: 2,
+      explanation:
+        "Natural language descriptions are easy for beginners but can be ambiguous or too informal for precise communication.",
+    },
+    {
+      id: 25,
+      question:
+        "In the factorial algorithm for n=5, what is the final value of 'result'?",
+      options: ["25", "15", "120", "720"],
+      correct: 2,
+      explanation:
+        "For n=5, the factorial is 1 × 2 × 3 × 4 × 5 = 120, as explicitly stated in the example.",
+    },
+    {
+      id: 26,
+      question:
+        "Which tool is recommended for creating flowcharts according to the best practices?",
+      options: [
+        "VisuAlgo",
+        "LeetCode Playground",
+        "Diagrams.net",
+        "Algorithm Visualizer",
+      ],
+      correct: 2,
+      explanation:
+        "Diagrams.net and Mermaid are specifically mentioned as tools for creating flowcharts.",
+    },
+    {
+      id: 27,
+      question:
+        "What type of loop structure is mentioned as part of the Iteration component in algorithms?",
+      options: [
+        "SWITCH and CASE",
+        "TRY and CATCH",
+        "WHILE and FOR",
+        "BEGIN and END",
+      ],
+      correct: 2,
+      explanation:
+        "The Iteration component specifically mentions WHILE and FOR as repetition structures.",
+    },
+    {
+      id: 28,
+      question:
+        "During the 'Developing a Strategy' step, which of the following is NOT listed as a technique to consider?",
+      options: [
+        "Greedy algorithms",
+        "Dynamic programming",
+        "Parallel processing",
+        "Divide and conquer",
+      ],
+      correct: 2,
+      explanation:
+        "The listed techniques are greedy algorithms, divide and conquer, dynamic programming, and brute force. Parallel processing is not mentioned.",
+    },
+    {
+      id: 29,
+      question:
+        "What should you identify when understanding the problem in the algorithm design process?",
+      options: [
+        "The best programming language to use",
+        "The fastest algorithm available",
+        "Inputs, required outputs, and constraints",
+        "The number of lines of code needed",
+      ],
+      correct: 2,
+      explanation:
+        "When understanding the problem, you must identify the inputs, required outputs, and any constraints.",
+    },
+    {
+      id: 30,
+      question:
+        "According to the document, which audience should primarily receive executable code as the algorithm representation?",
+      options: ["Exams and textbooks", "Researchers", "Developers", "Students"],
+      correct: 2,
+      explanation:
+        "The 'Target Your Audience' section specifies that developers should receive executable code, while exams/textbooks use pseudocode and researchers use math and pseudocode.",
     },
   ],
   "algo-chapter-2": [
