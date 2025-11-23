@@ -88,8 +88,6 @@ export default function MyQuizApp() {
 
   // Load questions for this specific chapter
   const questions = getQuestionsByChapter(chapterId);
-  console.log("CHAPTER ID:", chapterId);
-  console.log("QUESTIONS:", questions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);

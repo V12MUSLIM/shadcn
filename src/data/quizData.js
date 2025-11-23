@@ -11,7 +11,7 @@ export const SUBJECTS_DATA = {
     chapters: [
       {
         id: "os-chapter-1",
-        title: "OS Fundamentals",
+        title: "OS Ch-1",
         description: "Basic concepts and goals of operating systems",
       },
       {
@@ -95,31 +95,466 @@ export const CHAPTERS_DATA = Object.values(SUBJECTS_DATA);
 // Questions organized by chapter ID
 export const QUESTIONS_DB = {
   "os-chapter-1": [
+    // ---------------------- GROUP 1: OS BASICS (1–10) ----------------------
     {
       id: 1,
-      question: "What is the main goal of an Operating System?",
+      question: "What is the main role of an operating system?",
       options: [
-        "Maximize CPU usage",
-        "Minimize RAM usage",
-        "Cool the CPU",
-        "Design user interfaces",
-      ],
-      correct: 0,
-      explanation:
-        "The OS aims to maximize resource utilization while ensuring efficient and fair access to system resources.",
-    },
-    {
-      id: 2,
-      question: "What is the kernel in an operating system?",
-      options: [
-        "User interface",
-        "Core component managing resources",
-        "Application software",
-        "Web browser",
+        "To design CPU architecture",
+        "To manage hardware and provide a platform for applications",
+        "To manufacture computer components",
+        "To translate high-level code into hardware signals",
       ],
       correct: 1,
       explanation:
-        "The kernel is the core component of an OS that manages system resources and hardware-software communication.",
+        "An OS manages hardware resources and provides a basis for application programs.",
+    },
+    {
+      id: 2,
+      question: "Which component acts as the resource manager of the system?",
+      options: [
+        "Users",
+        "Hardware",
+        "Operating System",
+        "Application Programs",
+      ],
+      correct: 2,
+      explanation: "The OS manages CPU time, memory, storage, and I/O devices.",
+    },
+    {
+      id: 3,
+      question: "What is the only program running at all times on a computer?",
+      options: ["System daemon", "Compiler", "Kernel", "User application"],
+      correct: 2,
+      explanation: "The kernel is always running and is the core of the OS.",
+    },
+    {
+      id: 4,
+      question:
+        "Which type of program supports OS functionality but is not part of the kernel?",
+      options: [
+        "Firmware",
+        "System programs",
+        "Application programs",
+        "Drivers only",
+      ],
+      correct: 1,
+      explanation:
+        "System programs enhance OS functionality but run outside the kernel.",
+    },
+    {
+      id: 5,
+      question: "Which mode allows execution of privileged instructions?",
+      options: ["User mode", "Kernel mode", "Application mode", "Driver mode"],
+      correct: 1,
+      explanation: "Kernel mode has full hardware privileges.",
+    },
+    {
+      id: 6,
+      question: "What does the mode bit distinguish?",
+      options: [
+        "OS version",
+        "Kernel vs. user mode",
+        "Disk type",
+        "Memory size",
+      ],
+      correct: 1,
+      explanation:
+        "The mode bit indicates whether code runs in user or kernel mode.",
+    },
+    {
+      id: 7,
+      question: "What happens if user mode attempts a privileged instruction?",
+      options: [
+        "It executes normally",
+        "It is ignored",
+        "A trap occurs",
+        "The OS shuts down",
+      ],
+      correct: 2,
+      explanation: "Illegal privileged instructions trigger a trap to the OS.",
+    },
+    {
+      id: 8,
+      question: "What prevents a process from keeping the CPU forever?",
+      options: ["Cache", "Interrupt", "Timer", "Bootstrap"],
+      correct: 2,
+      explanation:
+        "A timer forces control back to the OS to prevent infinite loops.",
+    },
+    {
+      id: 9,
+      question: "A trap is best described as:",
+      options: [
+        "A hardware signal from I/O",
+        "A software-generated interrupt",
+        "A virus",
+        "A program counter reset",
+      ],
+      correct: 1,
+      explanation:
+        "Traps are software-generated interrupts triggered by errors or system calls.",
+    },
+    {
+      id: 10,
+      question: "Time-sharing systems aim to provide:",
+      options: [
+        "Long batch throughput",
+        "Rapid user interaction",
+        "Single-user execution",
+        "No multitasking",
+      ],
+      correct: 1,
+      explanation: "Time-sharing gives users fast, interactive responses.",
+    },
+
+    // ---------------------- GROUP 2: SYSTEM STRUCTURE (11–20) ----------------------
+    {
+      id: 11,
+      question: "Where is the bootstrap program stored?",
+      options: ["RAM", "SSD", "ROM/EEPROM", "Cache"],
+      correct: 2,
+      explanation: "The bootstrap resides in firmware such as ROM or EEPROM.",
+    },
+    {
+      id: 12,
+      question: "What is the job of the bootstrap program?",
+      options: [
+        "Compile C programs",
+        "Load the OS kernel into memory",
+        "Start user applications",
+        "Format the hard disk",
+      ],
+      correct: 1,
+      explanation:
+        "The bootstrap initializes hardware and loads the OS kernel.",
+    },
+    {
+      id: 13,
+      question: "What causes an interrupt?",
+      options: [
+        "CPU idle state",
+        "Hardware signals or system calls",
+        "Low memory",
+        "Application UI changes",
+      ],
+      correct: 1,
+      explanation:
+        "Interrupts come from hardware events or software system calls.",
+    },
+    {
+      id: 14,
+      question: "Where is the interrupt vector stored?",
+      options: ["High memory", "Registers", "Low memory", "SSD"],
+      correct: 2,
+      explanation:
+        "Interrupt pointers are stored in low memory for fast access.",
+    },
+    {
+      id: 15,
+      question: "Which memory type is volatile?",
+      options: ["Magnetic disk", "Flash", "Main memory", "SSD"],
+      correct: 2,
+      explanation: "Main memory loses contents when powered off.",
+    },
+    {
+      id: 16,
+      question: "Which statement about main memory is correct?",
+      options: [
+        "It is permanent storage",
+        "It holds instructions and data for executing processes",
+        "It cannot be written to",
+        "It is slower than disk",
+      ],
+      correct: 1,
+      explanation:
+        "Main memory holds the active instructions and data for running programs.",
+    },
+    {
+      id: 17,
+      question: "Which is the most common form of secondary storage?",
+      options: ["Registers", "Cache", "Magnetic disk", "EEPROM"],
+      correct: 2,
+      explanation: "Magnetic disks are the standard form of permanent storage.",
+    },
+    {
+      id: 18,
+      question: "What is the main advantage of DMA?",
+      options: [
+        "CPU executes disk instructions",
+        "Data transfers occur without CPU intervention",
+        "Cache becomes nonvolatile",
+        "Interrupts are disabled",
+      ],
+      correct: 1,
+      explanation:
+        "DMA transfers entire data blocks directly to memory without using the CPU.",
+    },
+    {
+      id: 19,
+      question: "What is the purpose of a device driver?",
+      options: [
+        "To design hardware",
+        "To give the OS a uniform interface to the device controller",
+        "To replace memory",
+        "To handle only CPU tasks",
+      ],
+      correct: 1,
+      explanation:
+        "Drivers translate OS commands into device-specific operations.",
+    },
+    {
+      id: 20,
+      question:
+        "Which feature enables programs larger than physical memory to execute?",
+      options: ["Swapping", "Virtual memory", "Firmware", "Direct I/O"],
+      correct: 1,
+      explanation:
+        "Virtual memory allows execution of programs not fully loaded in RAM.",
+    },
+
+    // ---------------------- GROUP 3: MULTIPROCESSOR & CLUSTER SYSTEMS (21–30) ----------------------
+    {
+      id: 21,
+      question: "Which is a benefit of multiprocessor systems?",
+      options: [
+        "Lower memory usage",
+        "Increased throughput",
+        "Slower I/O",
+        "Independent CPUs only",
+      ],
+      correct: 1,
+      explanation: "Multiple processors increase throughput.",
+    },
+    {
+      id: 22,
+      question: "What is graceful degradation?",
+      options: [
+        "System runs faster after failure",
+        "System partially operates when hardware fails",
+        "System stops completely during failure",
+        "System enters safe mode only",
+      ],
+      correct: 1,
+      explanation:
+        "Graceful degradation means partial service continues after failures.",
+    },
+    {
+      id: 23,
+      question: "Fault-tolerant systems can:",
+      options: [
+        "Stop entirely when a component fails",
+        "Continue operating even after a component failure",
+        "Run faster when failing",
+        "Never detect errors",
+      ],
+      correct: 1,
+      explanation:
+        "Fault tolerance allows operation even with hardware failures.",
+    },
+    {
+      id: 24,
+      question: "In asymmetric multiprocessing:",
+      options: [
+        "All CPUs share identical roles",
+        "One CPU controls others (boss–worker)",
+        "No communication exists",
+        "Each CPU must run a different OS",
+      ],
+      correct: 1,
+      explanation: "A boss CPU assigns tasks to worker CPUs.",
+    },
+    {
+      id: 25,
+      question: "In symmetric multiprocessing (SMP):",
+      options: [
+        "Only one CPU schedules tasks",
+        "CPUs have different privileges",
+        "All CPUs are peers and run all OS tasks",
+        "One CPU is always idle",
+      ],
+      correct: 2,
+      explanation: "SMP means all CPUs are equal peers.",
+    },
+    {
+      id: 26,
+      question: "Which statement about multicore systems is correct?",
+      options: [
+        "All multiprocessor systems are multicore",
+        "Multicore means multiple CPUs on one chip",
+        "Multicore systems cannot use shared caches",
+        "Multicore requires distributed architecture",
+      ],
+      correct: 1,
+      explanation: "Multicore refers to multiple processing cores on one chip.",
+    },
+    {
+      id: 27,
+      question: "Clustered systems are defined as:",
+      options: [
+        "Multiple CPUs on one motherboard",
+        "Multiple separate computers connected together",
+        "Single-core CPUs only",
+        "Systems without storage",
+      ],
+      correct: 1,
+      explanation: "Clusters are multiple independent nodes joined together.",
+    },
+    {
+      id: 28,
+      question: "Asymmetric clustering means:",
+      options: [
+        "All nodes run applications",
+        "One node is hot-standby while the other runs applications",
+        "Nodes take turns shutting down",
+        "Nodes share no storage",
+      ],
+      correct: 1,
+      explanation:
+        "One node actively monitors and replaces the other if it fails.",
+    },
+    {
+      id: 29,
+      question: "Symmetric clustering allows:",
+      options: [
+        "Only one active server",
+        "Multiple hosts to run applications and monitor each other",
+        "Only standby nodes",
+        "No parallel processing",
+      ],
+      correct: 1,
+      explanation:
+        "Symmetric clustering uses all hardware by running applications on all nodes.",
+    },
+    {
+      id: 30,
+      question: "Parallelization in clusters means:",
+      options: [
+        "Ignoring CPU cores",
+        "Executing program components simultaneously across nodes",
+        "Running one task per day",
+        "Stopping tasks on failure",
+      ],
+      correct: 1,
+      explanation:
+        "Parallelization divides a program so parts run concurrently on different nodes.",
+    },
+
+    // ---------------------- GROUP 4: DATA STRUCTURES & RELATED OS CONCEPTS (31–40) ----------------------
+    {
+      id: 31,
+      question: "Which data structure provides LIFO behavior?",
+      options: ["Queue", "Array", "Stack", "Tree"],
+      correct: 2,
+      explanation: "Stacks use the Last-In, First-Out principle.",
+    },
+    {
+      id: 32,
+      question: "Which data structure provides FIFO behavior?",
+      options: ["Stack", "Queue", "Hash map", "Binary tree"],
+      correct: 1,
+      explanation: "Queues remove items in the order they were inserted.",
+    },
+    {
+      id: 33,
+      question: "What is a linked list's main advantage?",
+      options: [
+        "Constant-time random access",
+        "Easy insertion and deletion",
+        "No memory usage",
+        "Sorted automatically",
+      ],
+      correct: 1,
+      explanation: "Linked lists allow efficient insertion and deletion.",
+    },
+    {
+      id: 34,
+      question: "Which is NOT a type of linked list?",
+      options: [
+        "Singly linked list",
+        "Doubly linked list",
+        "Circularly linked list",
+        "Reversed-array linked list",
+      ],
+      correct: 3,
+      explanation: "Reversed-array linked list is not a standard structure.",
+    },
+    {
+      id: 35,
+      question: "What does a hash function produce?",
+      options: [
+        "A tree",
+        "A sorted array",
+        "A numeric index",
+        "A binary queue",
+      ],
+      correct: 2,
+      explanation:
+        "Hash functions return numeric values used as table indices.",
+    },
+    {
+      id: 36,
+      question: "What causes a hash collision?",
+      options: [
+        "Too much RAM",
+        "Two inputs producing the same hash value",
+        "Lack of threads",
+        "Slow CPU",
+      ],
+      correct: 1,
+      explanation:
+        "Hash collisions occur when different inputs map to the same index.",
+    },
+    {
+      id: 37,
+      question: "A bitmap is used to represent:",
+      options: [
+        "CPU registers",
+        "Resource availability",
+        "Thread hierarchy",
+        "Hash map speed",
+      ],
+      correct: 1,
+      explanation: "Bitmaps represent the state of resources using bits.",
+    },
+    {
+      id: 38,
+      question: "Cache coherency ensures:",
+      options: [
+        "Registers never change",
+        "All caches see the most recent value of shared data",
+        "Each CPU runs a different OS",
+        "Disks remain synchronized",
+      ],
+      correct: 1,
+      explanation:
+        "Cache coherency ensures updated data is reflected across caches.",
+    },
+    {
+      id: 39,
+      question: "A distributed system is best defined as:",
+      options: [
+        "One CPU shared among users",
+        "A collection of networked, independent computers",
+        "A single laptop with multiple apps",
+        "A server without clients",
+      ],
+      correct: 1,
+      explanation:
+        "Distributed systems are multiple connected systems sharing resources.",
+    },
+    {
+      id: 40,
+      question: "In a peer-to-peer system:",
+      options: [
+        "One server controls all nodes",
+        "All nodes are equal and can act as clients or servers",
+        "Only one node can provide services",
+        "Nodes cannot store files",
+      ],
+      correct: 1,
+      explanation:
+        "Peer-to-peer systems allow every node to request or provide services.",
     },
   ],
   "os-chapter-2": [
@@ -954,15 +1389,10 @@ export const QUESTIONS_DB = {
     },
     {
       id: 31,
-      question:
-        "هل معاذ ومصطفى اب اشرف عبط؟",
-      options: [
-        "نعم",
-        "لا",
-      ],
+      question: "هل معاذ ومصطفى اب اشرف عبط؟",
+      options: ["نعم", "لا"],
       correct: 0,
-      explanation:
-        "في حاجة غلط في دماغمهم الجماعة دول!",
+      explanation: "في حاجة غلط في دماغمهم الجماعة دول!",
     },
   ],
   "ds-chapter-1": [

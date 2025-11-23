@@ -5,11 +5,11 @@ import App from "./App.jsx";
 import { TodosProvider } from "./contexts/todosContext";
 import { BrowserRouter } from "react-router";
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+ 
     <BrowserRouter>
       <TodosProvider>
         <App />
       </TodosProvider>
     </BrowserRouter>
-  </StrictMode>
+  
 );

@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom"; // Standard import for web
 import { ChapterProvider } from "./contexts/ChapterContext";
 import { QuestionProvider } from "./contexts/QuestionContext";
 import Layout from "@/layout/layout";
-
+import PdfViewer from "./pdf";
 // --- Page Imports ---
 import Home from "./Home";
 import Subjects from "./subjects";
@@ -34,6 +34,7 @@ function App() {
             {/* Fallback/Direct link for demo */}
 
             <Route path="/subject/:id" element={<SubjectDetails />} />
+            <Route path="pdf" element={<PdfViewer />} />
           </Route>
         </Routes>
       </QuestionProvider>
