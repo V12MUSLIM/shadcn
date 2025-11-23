@@ -21,7 +21,7 @@ export const SUBJECTS_DATA = {
       },
       {
         id: "os-chapter-3",
-        title: "Memory Management",
+        title: "OS Ch-3",
         description: "Virtual memory and paging techniques",
       },
     ],
@@ -1077,29 +1077,239 @@ export const QUESTIONS_DB = {
   "os-chapter-3": [
     {
       id: 1,
-      question: "What is the purpose of virtual memory?",
-      options: [
-        "Increase RAM speed",
-        "Allow programs larger than physical RAM",
-        "Encrypt data",
-        "Backup storage",
-      ],
+      question:
+        "Which advantage of multithreading allows an application to remain usable while a long-running task executes?",
+      options: ["Scalability", "Responsiveness", "Economy", "Resource Sharing"],
       correct: 1,
       explanation:
-        "Virtual memory allows execution of programs that may not fit completely in physical memory by using disk space as an extension of RAM.",
+        "Responsiveness allows an application to continue running even when a lengthy operation occurs in a separate thread.",
     },
     {
       id: 2,
-      question: "What is thrashing in an OS?",
+      question:
+        "Which feature allows threads to share code and data of the same process?",
       options: [
-        "CPU overheating",
-        "Excessive paging activity",
-        "Fast disk access",
-        "Network congestion",
+        "Message passing",
+        "Separate address spaces",
+        "Resource sharing",
+        "Context switching",
+      ],
+      correct: 2,
+      explanation:
+        "Threads share the same memory space of the process, giving them automatic access to shared resources.",
+    },
+    {
+      id: 3,
+      question:
+        "Why is creating a thread generally more economical than creating a process?",
+      options: [
+        "Threads do not need memory at all",
+        "Threads share resources of their parent process",
+        "Processes execute faster than threads",
+        "Threads run only on a single core",
       ],
       correct: 1,
       explanation:
-        "Thrashing occurs when the system spends more time swapping pages in and out of memory than executing processes.",
+        "Thread creation is cheaper because threads reuse the memory and resources of their containing process.",
+    },
+    {
+      id: 4,
+      question:
+        "On a multicore system, multithreading improves performance primarily due to:",
+      options: [
+        "Better RAM usage",
+        "Parallel execution",
+        "Better power management",
+        "Reduced memory fragmentation",
+      ],
+      correct: 1,
+      explanation:
+        "Multiple cores allow threads to run simultaneously, enabling true parallel execution.",
+    },
+    {
+      id: 5,
+      question:
+        "A system that rapidly switches between tasks to make progress is considered:",
+      options: ["Parallel", "Concurrent", "Single-threaded", "Kernel-based"],
+      correct: 1,
+      explanation:
+        "Concurrency means multiple tasks make progress, even without running simultaneously.",
+    },
+    {
+      id: 6,
+      question: "User-level threads are managed by:",
+      options: [
+        "The hardware",
+        "The kernel",
+        "The compiler",
+        "A thread library above the kernel",
+      ],
+      correct: 3,
+      explanation:
+        "User threads are created and controlled without kernel involvement, using a user-level thread library.",
+    },
+    {
+      id: 7,
+      question:
+        "Which multithreading model maps many user-level threads to a single kernel thread?",
+      options: ["One-to-one", "Two-level", "Many-to-one", "Many-to-many"],
+      correct: 2,
+      explanation:
+        "The many-to-one model maps all user threads onto one kernel thread.",
+    },
+    {
+      id: 8,
+      question: "Which model maps each user thread to a kernel thread?",
+      options: ["Many-to-one", "Two-level", "One-to-one", "Many-to-many"],
+      correct: 2,
+      explanation:
+        "The one-to-one model assigns every user thread its own kernel thread.",
+    },
+    {
+      id: 9,
+      question:
+        "Which multithreading model multiplexes many user threads to fewer or equal kernel threads?",
+      options: ["Two-level", "One-to-one", "Many-to-many", "Many-to-one"],
+      correct: 2,
+      explanation:
+        "The many-to-many model connects user threads to multiple kernel threads, allowing flexible scheduling.",
+    },
+    {
+      id: 10,
+      question: "The two-level model differs from many-to-many because it:",
+      options: [
+        "Requires only one kernel thread",
+        "Allows binding a user thread to a specific kernel thread",
+        "Map threads using hardware interrupts",
+        "Does not support concurrency",
+      ],
+      correct: 1,
+      explanation:
+        "Two-level model allows optional binding between a user thread and a kernel thread.",
+    },
+    {
+      id: 11,
+      question:
+        "Which is the first challenge in programming for multicore systems?",
+      options: [
+        "Identifying tasks",
+        "Data dependency",
+        "Balance",
+        "Testing and debugging",
+      ],
+      correct: 0,
+      explanation:
+        "Task identification is the first challenge: finding parts of the program that can run in parallel.",
+    },
+    {
+      id: 12,
+      question: "Which challenge focuses on dividing data among cores?",
+      options: ["Balance", "Identifying tasks", "Testing", "Data splitting"],
+      correct: 3,
+      explanation:
+        "Data splitting distributes data across cores to support parallel processing.",
+    },
+    {
+      id: 13,
+      question:
+        "When one task relies on results from another task, this is known as:",
+      options: [
+        "Thread starvation",
+        "Data dependency",
+        "Load imbalance",
+        "Context coupling",
+      ],
+      correct: 1,
+      explanation:
+        "Data dependency occurs when one task requires the output of another, requiring synchronization.",
+    },
+    {
+      id: 14,
+      question: "Debugging multithreaded programs is difficult because:",
+      options: [
+        "Threads run slower",
+        "Threads cannot access memory",
+        "Execution paths are unpredictable",
+        "Compilers disable optimizations",
+      ],
+      correct: 2,
+      explanation:
+        "Multiple threads introduce many possible execution interleavings, making debugging harder.",
+    },
+    {
+      id: 15,
+      question: "Data parallelism involves:",
+      options: [
+        "Splitting tasks across cores",
+        "Running different operations on shared data",
+        "Distributing subsets of the same data across cores",
+        "Mapping threads to kernel threads",
+      ],
+      correct: 2,
+      explanation:
+        "Data parallelism processes different portions of the same dataset on different cores.",
+    },
+    {
+      id: 16,
+      question: "Task parallelism differs from data parallelism because it:",
+      options: [
+        "Runs identical operations on different data",
+        "Runs unique operations on possibly shared data",
+        "Requires user-level threads only",
+        "Is slower on multicore systems",
+      ],
+      correct: 1,
+      explanation:
+        "Task parallelism assigns different tasks (operations) to different threads.",
+    },
+    {
+      id: 17,
+      question: "Which scenario demonstrates concurrency but not parallelism?",
+      options: [
+        "Two threads running at the same time on two cores",
+        "One core rapidly switching between threads",
+        "Two cores executing two tasks simultaneously",
+        "Two processes running in parallel on separate cores",
+      ],
+      correct: 1,
+      explanation:
+        "Concurrency occurs when tasks make progress without actually running at the same time.",
+    },
+    {
+      id: 18,
+      question: "What is a drawback of the many-to-one model?",
+      options: [
+        "Wastes CPU cores",
+        "Cannot run in parallel on multicore systems",
+        "Requires too many kernel threads",
+        "Prevents resource sharing",
+      ],
+      correct: 1,
+      explanation:
+        "Many-to-one cannot achieve parallelism because only one kernel thread exists.",
+    },
+    {
+      id: 19,
+      question:
+        "Which model offers the best flexibility and performance trade-off for modern OS designs?",
+      options: ["Many-to-one", "One-to-one", "Many-to-many", "Two-level"],
+      correct: 2,
+      explanation:
+        "Many-to-many allows concurrency, parallelism, and efficient thread management.",
+    },
+    {
+      id: 20,
+      question:
+        "Why must programmers consider task balance in multicore design?",
+      options: [
+        "Some tasks may overpower the scheduler",
+        "Unbalanced tasks reduce the benefit of parallel execution",
+        "Threads always take equal time to execute",
+        "Balance ensures fewer kernel threads are created",
+      ],
+      correct: 1,
+      explanation:
+        "Running a small or low-value task on a separate core can waste resources and reduce performance.",
     },
   ],
   "algo-chapter-1": [
