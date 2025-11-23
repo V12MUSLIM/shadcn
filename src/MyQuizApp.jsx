@@ -133,7 +133,7 @@ export default function MyQuizApp() {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prev) => prev - 1);
       setSelectedOption(null);
-      setShowFeedback(false);
+      setShowFeedback(true);
     }
   };
   // Render Results if finished

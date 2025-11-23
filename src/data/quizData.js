@@ -16,7 +16,7 @@ export const SUBJECTS_DATA = {
       },
       {
         id: "os-chapter-2",
-        title: "Process Management",
+        title: "OS Ch-2",
         description: "Process scheduling and synchronization",
       },
       {
@@ -560,29 +560,518 @@ export const QUESTIONS_DB = {
   "os-chapter-2": [
     {
       id: 1,
-      question: "What is a Deadlock?",
+      question: "What is the main difference between a program and a process?",
       options: [
-        "System crash",
-        "Cyclic waiting for resources",
-        "Fast processing mode",
-        "Memory leak",
+        "A program is stored in RAM, while a process is stored on disk",
+        "A program is a passive entity, while a process is an active entity in execution",
+        "A program contains data, while a process contains only code",
+        "A program always has multiple threads, while a process has only one",
       ],
       correct: 1,
       explanation:
-        "Deadlock occurs when processes are blocked indefinitely because each is holding a resource and waiting for another resource held by another process.",
+        "A program is a passive entity (an executable file on disk), whereas a process is a program in execution with a program counter, registers, and allocated resources.",
     },
     {
       id: 2,
-      question: "Which scheduling algorithm can cause starvation?",
+      question: "Which of the following is NOT typically part of a process?",
+      options: ["Text section", "Stack", "Heap", "BIOS firmware"],
+      correct: 3,
+      explanation:
+        "A process typically consists of a text (code) section, stack, data section, and heap. BIOS firmware is part of the hardware/firmware layer, not the process.",
+    },
+    {
+      id: 3,
+      question: "Which section of a process contains global variables?",
+      options: ["Text section", "Data section", "Stack", "Heap"],
+      correct: 1,
+      explanation:
+        "Global variables are stored in the data section of a process.",
+    },
+    {
+      id: 4,
+      question:
+        "In the context of the Java Virtual Machine (JVM), which of the following is TRUE?",
       options: [
-        "Round Robin",
-        "First Come First Serve",
-        "Priority Scheduling",
-        "Shortest Job First",
+        "The JVM is part of the hardware",
+        "The JVM itself runs as a process and executes Java bytecode",
+        "Each Java class file is a separate process",
+        "The JVM does not interact with the operating system",
+      ],
+      correct: 1,
+      explanation:
+        "The JVM is a process started by a command like java Program; it interprets Java bytecode and uses native machine instructions on behalf of the Java code.",
+    },
+    {
+      id: 5,
+      question:
+        "Which process state represents a process that is ready to run but not currently executing?",
+      options: ["New", "Waiting", "Ready", "Terminated"],
+      correct: 2,
+      explanation:
+        "The Ready state means the process is in main memory and waiting to be assigned to a CPU.",
+    },
+    {
+      id: 6,
+      question:
+        "A process that is waiting for I/O completion is in which state?",
+      options: ["New", "Running", "Waiting", "Ready"],
+      correct: 2,
+      explanation:
+        "When a process is waiting for some event (like I/O completion), it is in the Waiting (or Blocked) state.",
+    },
+    {
+      id: 7,
+      question:
+        "At any instant, how many processes can be in the Running state on a single-core processor?",
+      options: ["Zero or one", "Exactly two", "At least one", "Unlimited"],
+      correct: 0,
+      explanation:
+        "On a single-core CPU, at most one process can be running at any instant; others must be ready or waiting.",
+    },
+    {
+      id: 8,
+      question:
+        "Which of the following is NOT typically stored in the Process Control Block (PCB)?",
+      options: [
+        "CPU registers",
+        "Process state",
+        "List of I/O devices allocated",
+        "Source code of the program",
+      ],
+      correct: 3,
+      explanation:
+        "The PCB stores execution context and management information, not the program’s source code.",
+    },
+    {
+      id: 9,
+      question: "What does the program counter field in the PCB represent?",
+      options: [
+        "The total number of instructions executed",
+        "The address of the next instruction to be executed",
+        "The starting address of the process in memory",
+        "The size of the stack",
+      ],
+      correct: 1,
+      explanation:
+        "The program counter contains the address of the next instruction that the CPU will execute for that process.",
+    },
+    {
+      id: 10,
+      question:
+        "Which type of information in the PCB is used directly by the CPU scheduler?",
+      options: [
+        "CPU-scheduling information",
+        "Accounting information",
+        "I/O status information",
+        "Memory-management information",
+      ],
+      correct: 0,
+      explanation:
+        "The CPU scheduler uses CPU-scheduling information (such as priority and queue pointers) to decide which process runs next.",
+    },
+    {
+      id: 11,
+      question:
+        "What is the main advantage of allowing a process to have multiple threads of execution?",
+      options: [
+        "It reduces the size of the PCB",
+        "It allows the process to perform multiple tasks concurrently",
+        "It removes the need for a scheduler",
+        "It forces each thread to use separate memory space",
+      ],
+      correct: 1,
+      explanation:
+        "Multiple threads allow a process to perform more than one task at a time, especially beneficial on multicore systems.",
+    },
+    {
+      id: 12,
+      question:
+        "On a multicore system, how can multiple threads of the same process improve performance?",
+      options: [
+        "By disabling context switches",
+        "By running in strict sequence on one core",
+        "By running in parallel on different cores",
+        "By sharing no data at all",
       ],
       correct: 2,
       explanation:
-        "Priority Scheduling can cause starvation when high-priority processes continuously arrive, preventing low-priority processes from executing.",
+        "Multiple threads can be scheduled on different cores, enabling true parallel execution.",
+    },
+    {
+      id: 13,
+      question: "What is the primary objective of multiprogramming?",
+      options: [
+        "To reduce the number of processes in the system",
+        "To maximize CPU utilization by always having some process running",
+        "To eliminate I/O operations",
+        "To ensure only one user can use the system at a time",
+      ],
+      correct: 1,
+      explanation:
+        "Multiprogramming aims to keep the CPU busy by having some process running at all times.",
+    },
+    {
+      id: 14,
+      question:
+        "In a time-sharing system, why is the CPU frequently switched among processes?",
+      options: [
+        "To reduce memory usage",
+        "To make users feel their programs are running interactively",
+        "To avoid using multitasking",
+        "To prevent context switching",
+      ],
+      correct: 1,
+      explanation:
+        "Frequent switching gives the illusion that each user has a dedicated CPU, improving interactivity.",
+    },
+    {
+      id: 15,
+      question:
+        "Which queue holds all processes that are in main memory and ready to execute?",
+      options: ["Job queue", "Ready queue", "Device queue", "Exit queue"],
+      correct: 1,
+      explanation:
+        "The ready queue contains all processes that are in memory and ready for CPU execution.",
+    },
+    {
+      id: 16,
+      question: "What is the job queue?",
+      options: [
+        "All processes currently running on the CPU",
+        "All processes that are in the ready state",
+        "All processes in the system",
+        "All processes waiting for I/O completion",
+      ],
+      correct: 2,
+      explanation:
+        "The job queue consists of all processes in the system, including those not yet in memory.",
+    },
+    {
+      id: 17,
+      question:
+        "Which of the following is a possible event while a process is executing on the CPU?",
+      options: [
+        "It requests I/O and moves to an I/O queue",
+        "It always remains running until termination",
+        "It cannot create child processes",
+        "It can never be interrupted",
+      ],
+      correct: 0,
+      explanation:
+        "A running process may issue an I/O request, create child processes, or be preempted and moved back to the ready queue.",
+    },
+    {
+      id: 18,
+      question:
+        "Which scheduler selects processes from secondary storage (spooled processes) and loads them into memory?",
+      options: [
+        "Short-term scheduler (CPU scheduler)",
+        "Long-term scheduler (job scheduler)",
+        "Medium-term scheduler",
+        "Context scheduler",
+      ],
+      correct: 1,
+      explanation:
+        "The long-term scheduler chooses which processes from the pool on disk are brought into main memory.",
+    },
+    {
+      id: 19,
+      question:
+        "What is the main role of the short-term scheduler (CPU scheduler)?",
+      options: [
+        "To decide which process to admit into the system",
+        "To select which ready process gets the CPU next",
+        "To swap processes to and from disk",
+        "To terminate zombie processes",
+      ],
+      correct: 1,
+      explanation:
+        "The short-term scheduler selects from the ready queue which process should execute on the CPU next.",
+    },
+    {
+      id: 20,
+      question: "Which statement about the long-term scheduler is TRUE?",
+      options: [
+        "It runs very frequently (e.g., every few milliseconds)",
+        "It controls the degree of multiprogramming in the system",
+        "It is responsible only for I/O-bound processes",
+        "It is the same as the dispatcher",
+      ],
+      correct: 1,
+      explanation:
+        "The long-term scheduler determines how many processes are in memory, thus controlling the degree of multiprogramming.",
+    },
+    {
+      id: 21,
+      question: "An I/O-bound process is characterized by:",
+      options: [
+        "Spending most of its time doing computations",
+        "Generating frequent I/O requests and less computation",
+        "Never performing I/O operations",
+        "Always running at the highest priority",
+      ],
+      correct: 1,
+      explanation:
+        "I/O-bound processes perform I/O frequently and use relatively less CPU time between I/O operations.",
+    },
+    {
+      id: 22,
+      question:
+        "Why is it important for the long-term scheduler to select a good mix of I/O-bound and CPU-bound processes?",
+      options: [
+        "To simplify context switching",
+        "To ensure all processes terminate quickly",
+        "To keep both CPU and I/O devices busy for better system balance",
+        "To reduce the size of the ready queue",
+      ],
+      correct: 2,
+      explanation:
+        "A good mix keeps CPU and devices utilized; otherwise, either CPU or I/O devices may sit idle.",
+    },
+    {
+      id: 23,
+      question: "What is a context switch?",
+      options: [
+        "Changing from user mode to kernel mode",
+        "Saving the state of one process and restoring the state of another",
+        "Switching from one thread to another within the same process",
+        "Restarting a process from the beginning",
+      ],
+      correct: 1,
+      explanation:
+        "A context switch saves the current process’s context (registers, state, etc.) and restores another process’s context.",
+    },
+    {
+      id: 24,
+      question:
+        "Where is the context of a process stored during a context switch?",
+      options: [
+        "In the data section",
+        "In the PCB",
+        "In the stack only",
+        "In the heap",
+      ],
+      correct: 1,
+      explanation:
+        "The context (registers, program counter, state, memory info) is stored in the process’s PCB.",
+    },
+    {
+      id: 25,
+      question: "Which of the following is TRUE about context switching?",
+      options: [
+        "It is free and has no overhead",
+        "It requires saving and restoring CPU registers and process state",
+        "It only happens when a process terminates",
+        "It does not involve the operating system",
+      ],
+      correct: 1,
+      explanation:
+        "Context switching involves the OS saving and restoring state, which introduces overhead.",
+    },
+    {
+      id: 26,
+      question: "In a typical operating system, what is a parent process?",
+      options: [
+        "A process that has terminated",
+        "A process that creates one or more child processes",
+        "A process that cannot create any other process",
+        "A process that only runs in kernel mode",
+      ],
+      correct: 1,
+      explanation:
+        "The process that calls a create operation (e.g., fork) is the parent of the newly created child process.",
+    },
+    {
+      id: 27,
+      question:
+        "Which of the following is a possible execution relationship between a parent and its child processes?",
+      options: [
+        "The parent must always terminate before the child",
+        "The parent must always terminate after the child",
+        "The parent and child can execute concurrently",
+        "The parent cannot execute once a child is created",
+      ],
+      correct: 2,
+      explanation:
+        "One option is for the parent to continue executing concurrently with its children.",
+    },
+    {
+      id: 28,
+      question:
+        "Which of the following is a possible address-space relationship when a process creates a child?",
+      options: [
+        "The child must share the exact same stack frame",
+        "The child is always an independent program unrelated to the parent",
+        "The child can be a duplicate of the parent or have a new program loaded",
+        "The child cannot use memory at all",
+      ],
+      correct: 2,
+      explanation:
+        "Two cases: the child is a duplicate of the parent, or a new program is loaded into the child’s address space.",
+    },
+    {
+      id: 29,
+      question: "What is cascading termination?",
+      options: [
+        "When a process terminates and all its child processes are also terminated",
+        "When a process is repeatedly restarted after termination",
+        "When the CPU scheduler constantly replaces processes",
+        "When a process terminates without freeing memory",
+      ],
+      correct: 0,
+      explanation:
+        "In cascading termination, if a parent process terminates, the operating system also terminates all its child processes.",
+    },
+    {
+      id: 30,
+      question: "What is a zombie process?",
+      options: [
+        "A process that is running in an infinite loop",
+        "A terminated process whose parent has not yet called wait()",
+        "A child process that kills its parent",
+        "A process that cannot be terminated",
+      ],
+      correct: 1,
+      explanation:
+        "A zombie process has terminated, but its entry remains in the process table until the parent calls wait() to collect its exit status.",
+    },
+    {
+      id: 31,
+      question:
+        "What happens to a zombie process when the parent process finally calls wait()?",
+      options: [
+        "It is moved back to the ready queue",
+        "Its resources are reallocated to the parent",
+        "Its PID and process table entry are released",
+        "It becomes an orphan process",
+      ],
+      correct: 2,
+      explanation:
+        "When the parent calls wait(), the system can free the zombie’s PID and remove its entry from the process table.",
+    },
+    {
+      id: 32,
+      question: "Which of the following best describes an independent process?",
+      options: [
+        "A process that shares data with other processes",
+        "A process that can be affected by other processes",
+        "A process that does not share any data with other processes",
+        "A process that must always run in kernel mode",
+      ],
+      correct: 2,
+      explanation:
+        "An independent process neither affects nor is affected by other processes; it shares no data with them.",
+    },
+    {
+      id: 33,
+      question:
+        "Which of the following is NOT a reason for providing an environment for cooperating processes?",
+      options: [
+        "Information sharing",
+        "Computation speedup",
+        "Modularity",
+        "Increasing context-switch overhead",
+      ],
+      correct: 3,
+      explanation:
+        "Cooperation is aimed at sharing information, speeding up computation, modularity, and convenience—not increasing overhead.",
+    },
+    {
+      id: 34,
+      question:
+        "In the shared-memory model of interprocess communication (IPC), processes exchange information by:",
+      options: [
+        "Writing and reading data in a common memory region",
+        "Sending signals only",
+        "Using only message queues managed by the kernel",
+        "Directly modifying each other’s private stacks",
+      ],
+      correct: 0,
+      explanation:
+        "Shared-memory IPC establishes a common memory region that all cooperating processes can read from and write to.",
+    },
+    {
+      id: 35,
+      question: "Which requirement must be met for shared-memory IPC to work?",
+      options: [
+        "The OS must completely prevent access to other processes’ memory",
+        "Processes must agree to share a specific memory region",
+        "Processes must not execute concurrently",
+        "Each process must run on a different CPU core",
+      ],
+      correct: 1,
+      explanation:
+        "Shared-memory IPC requires that processes agree to attach and access a shared memory region.",
+    },
+    {
+      id: 36,
+      question:
+        "In the producer–consumer problem using shared memory, what is the main purpose of the buffer?",
+      options: [
+        "To store process control blocks",
+        "To hold items produced but not yet consumed",
+        "To store only error messages",
+        "To queue incoming interrupts",
+      ],
+      correct: 1,
+      explanation:
+        "The buffer allows the producer to place items and the consumer to remove them, enabling concurrent operation.",
+    },
+    {
+      id: 37,
+      question:
+        "Why must the producer and consumer be synchronized in the producer–consumer problem?",
+      options: [
+        "To prevent the CPU from switching between them",
+        "To ensure the producer never stops producing",
+        "To prevent the consumer from consuming items that haven’t been produced",
+        "To guarantee that both always run on the same core",
+      ],
+      correct: 2,
+      explanation:
+        "Synchronization is required so the consumer does not read from an empty buffer and the producer does not overwrite unconsumed items.",
+    },
+    {
+      id: 38,
+      question:
+        "In the message-passing model, which primitives are typically used for communication?",
+      options: [
+        "open() and close()",
+        "malloc() and free()",
+        "send() and receive()",
+        "fork() and exec()",
+      ],
+      correct: 2,
+      explanation:
+        "Message passing uses send() and receive() primitives for communication between processes.",
+    },
+    {
+      id: 39,
+      question:
+        "Which of the following best describes a blocking send operation in message passing?",
+      options: [
+        "The sender continues execution immediately after sending the message",
+        "The sender waits until the message is received by the receiver or mailbox",
+        "The sender waits until the receiver terminates",
+        "The sender never resumes after sending the message",
+      ],
+      correct: 1,
+      explanation:
+        "With blocking send, the sending process is blocked until the message is received.",
+    },
+    {
+      id: 40,
+      question:
+        "In a nonblocking receive operation, what does the receiver get?",
+      options: [
+        "It always blocks until a message is available",
+        "It either gets a valid message or a null result",
+        "It always gets a valid message",
+        "It terminates if no message is available",
+      ],
+      correct: 1,
+      explanation:
+        "A nonblocking receive returns immediately with either a valid message (if available) or a null indicating no message.",
     },
   ],
   "os-chapter-3": [
