@@ -54,7 +54,7 @@ export const SUBJECTS_DATA = {
     chapters: [
       {
         id: "ds-chapter-1",
-        title: "Statistical Analysis",
+        title: "Data Science Ch-1",
         description: "P-values and statistical significance",
       },
     ],
@@ -2097,29 +2097,277 @@ export const QUESTIONS_DB = {
   "ds-chapter-1": [
     {
       id: 1,
-      question: "What does a p-value less than 0.05 typically indicate?",
+      question: "Which of the following best describes Data Science?",
       options: [
-        "No significance",
-        "Statistical significance",
-        "Data error",
-        "Perfect correlation",
+        "A field focused only on designing computer hardware",
+        "An interdisciplinary field that extracts insights from data using statistics and computation",
+        "A branch of mathematics focused solely on equations",
+        "A technique for storing files efficiently",
       ],
       correct: 1,
       explanation:
-        "A p-value less than 0.05 typically indicates that the results are statistically significant at the 95% confidence level.",
+        "Data science uses statistics, programming, and domain knowledge to extract value from data.",
     },
+
     {
       id: 2,
-      question: "What is the purpose of data normalization?",
+      question:
+        "Which term refers to raw facts that have not yet been processed?",
+      options: ["Information", "Knowledge", "Data", "Insight"],
+      correct: 2,
+      explanation:
+        "Data are raw unprocessed facts, while information is processed and meaningful.",
+    },
+
+    {
+      id: 3,
+      question: "Which of the following is an example of structured data?",
       options: [
-        "Remove duplicates",
-        "Scale features to similar ranges",
-        "Encrypt data",
-        "Compress files",
+        "A collection of audio recordings",
+        "A folder of images",
+        "A relational database table",
+        "Unlabeled social media posts",
+      ],
+      correct: 2,
+      explanation:
+        "Structured data follows a predefined schema, like relational tables.",
+    },
+
+    {
+      id: 4,
+      question: "Which step typically comes first in the Data Science process?",
+      options: [
+        "Model evaluation",
+        "Data cleaning",
+        "Defining the problem",
+        "Model deployment",
+      ],
+      correct: 2,
+      explanation:
+        "A project begins with defining the problem before collecting or cleaning data.",
+    },
+
+    {
+      id: 5,
+      question:
+        "What does a domain expert contribute to a data science project?",
+      options: [
+        "Programming tools",
+        "Context and understanding of the real-world problem",
+        "New statistical models",
+        "Database schemas",
       ],
       correct: 1,
       explanation:
-        "Normalization scales numerical features to a common range, preventing features with larger values from dominating the analysis.",
+        "Domain experts provide contextual understanding that guides data interpretation.",
+    },
+
+    {
+      id: 6,
+      question:
+        "Which of the following is NOT a typical responsibility of a data scientist?",
+      options: [
+        "Collecting and cleaning data",
+        "Designing machine learning models",
+        "Performing statistical analysis",
+        "Assembling computer hardware",
+      ],
+      correct: 3,
+      explanation:
+        "Hardware assembly is unrelated to data science responsibilities.",
+    },
+
+    {
+      id: 7,
+      question:
+        "Which skill is essential for communicating findings in data science?",
+      options: [
+        "Storytelling and visualization",
+        "Circuit design",
+        "Operating system development",
+        "Network packet routing",
+      ],
+      correct: 0,
+      explanation:
+        "Data visualization and communication are critical parts of presenting insights.",
+    },
+
+    {
+      id: 8,
+      question: "What is the main purpose of exploratory data analysis (EDA)?",
+      options: [
+        "Testing a finalized model",
+        "Exploring patterns, anomalies, and structure in data",
+        "Deploying a model to production",
+        "Encrypting sensitive information",
+      ],
+      correct: 1,
+      explanation: "EDA helps uncover patterns and prepare for modeling.",
+    },
+
+    {
+      id: 9,
+      question: "What type of data is produced by sensors and IoT devices?",
+      options: [
+        "Highly structured numerical streams",
+        "Only unstructured text",
+        "Only images",
+        "Only categorical values",
+      ],
+      correct: 0,
+      explanation: "Sensors commonly produce numeric time-series data.",
+    },
+
+    {
+      id: 10,
+      question:
+        "Which term refers to the process of transforming data into a usable format?",
+      options: [
+        "Data cleaning",
+        "Data mining",
+        "Data retrieval",
+        "Data warehousing",
+      ],
+      correct: 0,
+      explanation:
+        "Cleaning resolves missing, inconsistent, and noisy data issues.",
+    },
+
+    {
+      id: 11,
+      question: "Information differs from data because:",
+      options: [
+        "Information is raw while data is processed",
+        "Information requires context and interpretation",
+        "Information can only be stored in databases",
+        "Information is always text-based",
+      ],
+      correct: 1,
+      explanation:
+        "Information results from processing and interpreting raw data.",
+    },
+
+    {
+      id: 12,
+      question: "Which of the following is an unstructured data type?",
+      options: ["SQL table", "CSV file", "Image collection", "Excel sheet"],
+      correct: 2,
+      explanation: "Images lack a predefined schema, making them unstructured.",
+    },
+
+    {
+      id: 13,
+      question:
+        "Which role is responsible for maintaining and optimizing databases for storage and access?",
+      options: [
+        "Machine Learning Engineer",
+        "Data Engineer",
+        "Statistician",
+        "UX Designer",
+      ],
+      correct: 1,
+      explanation: "Data engineers build pipelines and manage storage systems.",
+    },
+
+    {
+      id: 14,
+      question: "Machine learning models rely primarily on:",
+      options: [
+        "Heuristic guesses",
+        "Pattern learning from historical data",
+        "Manual labeling of every possible scenario",
+        "Purely random behaviors",
+      ],
+      correct: 1,
+      explanation:
+        "ML models learn patterns from existing data to make predictions.",
+    },
+
+    {
+      id: 15,
+      question: "Which of the following is a disadvantage of big data?",
+      options: [
+        "It always guarantees perfect predictions",
+        "It can be expensive to store, process, and analyze",
+        "It removes the need for domain experts",
+        "It eliminates uncertainty in decision-making",
+      ],
+      correct: 1,
+      explanation:
+        "Large datasets require resources and expertise to manage effectively.",
+    },
+
+    {
+      id: 16,
+      question:
+        "A model that performs very well on training data but poorly on new data is experiencing:",
+      options: [
+        "Underfitting",
+        "Overfitting",
+        "Generalization",
+        "Normalization",
+      ],
+      correct: 1,
+      explanation:
+        "Overfitting means the model memorizes training data instead of learning patterns.",
+    },
+
+    {
+      id: 17,
+      question:
+        "Which step involves checking the accuracy, precision, and overall performance of a model?",
+      options: [
+        "Model evaluation",
+        "Data collection",
+        "Data storytelling",
+        "Feature extraction",
+      ],
+      correct: 0,
+      explanation:
+        "Evaluation checks how well the model performs on unseen data.",
+    },
+
+    {
+      id: 18,
+      question:
+        "Which technique is commonly used for reducing dimensionality in data?",
+      options: [
+        "PCA (Principal Component Analysis)",
+        "SQL indexing",
+        "CPU parallelization",
+        "Network segmentation",
+      ],
+      correct: 0,
+      explanation: "PCA reduces dimensionality while preserving variance.",
+    },
+
+    {
+      id: 19,
+      question:
+        "Which of the following best describes the role of a hypothesis in data analysis?",
+      options: [
+        "A guaranteed conclusion about the dataset",
+        "A testable statement that can be evaluated with statistical methods",
+        "A visualization technique",
+        "A type of unstructured data",
+      ],
+      correct: 1,
+      explanation: "Hypotheses must be testable using data-driven approaches.",
+    },
+
+    {
+      id: 20,
+      question:
+        "What is the main challenge in working with real-world datasets?",
+      options: [
+        "They are always perfectly clean and complete",
+        "They often contain missing, noisy, or inconsistent data",
+        "They never require preprocessing",
+        "They are too small to analyze",
+      ],
+      correct: 1,
+      explanation:
+        "Real-world data typically requires significant cleaning before analysis.",
     },
   ],
   "prob-chapter-1": [

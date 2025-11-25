@@ -4,7 +4,6 @@ import {
   CheckCircle2,
   XCircle,
   ArrowRight,
-  ArrowLeft,
   RotateCcw,
   LayoutDashboard,
   AlertCircle,
@@ -17,9 +16,12 @@ import { useQuestions } from "./contexts/QuestionContext";
 
 const optionLabels = ["A", "B", "C", "D"];
 
-// --- Results Component (Internal) ---
-const Results = ({ score, total, onRetry }) => {
+/* -------------------------------------------------------
+   RESULTS COMPONENT 
+--------------------------------------------------------*/
+const Results = ({ score, total, onRetry, questions, chapterId, getUserAnswer }) => {
   const percentage = (score / total) * 100;
+
   let message = "Keep practicing!";
   let color = "text-slate-400";
 
@@ -35,15 +37,19 @@ const Results = ({ score, total, onRetry }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center p-6">
-      <div className="max-w-md w-full bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 text-center shadow-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-6 flex items-center justify-center">
+      <div className="max-w-3xl w-full bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 shadow-2xl">
+
+        {/* HEADER */}
         <div className="w-20 h-20 bg-[#5227FF]/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#5227FF]/50">
           <Trophy className="w-10 h-10 text-[#5227FF]" />
         </div>
-        <h2 className="text-3xl font-bold text-white mb-2">Quiz Complete!</h2>
-        <p className={`text-lg font-medium ${color} mb-8`}>{message}</p>
 
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <h2 className="text-3xl font-bold text-white mb-2 text-center">Quiz Complete!</h2>
+        <p className={`text-lg font-medium text-center ${color} mb-8`}>{message}</p>
+
+        {/* SCORE BOXES */}
+        <div className="grid grid-cols-2 gap-4 mb-10">
           <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
             <p className="text-slate-400 text-sm">Score</p>
             <p className="text-2xl font-bold text-white">
@@ -58,13 +64,49 @@ const Results = ({ score, total, onRetry }) => {
           </div>
         </div>
 
-        <div className="space-y-3">
+        {/* USER ANSWERS */}
+        <div className="space-y-4">
+          {questions.map((q, i) => {
+            const userAnswer = getUserAnswer(chapterId, q.id);
+            const isCorrect = userAnswer === q.correct;
+
+            return (
+              <div
+                key={q.id}
+                className="p-4 rounded-xl bg-slate-900/30 border border-slate-700"
+              >
+                <p className="text-white font-semibold mb-2">
+                  {i + 1}. {q.question}
+                </p>
+
+                <p
+                  className={`font-bold ${
+                    isCorrect ? "text-emerald-400" : "text-rose-400"
+                  }`}
+                >
+                  Your Answer:{" "}
+                  {userAnswer !== null && userAnswer !== undefined
+                    ? q.options[userAnswer]
+                    : "Not Answered"}
+                </p>
+
+                <p className="text-slate-400">
+                  Correct Answer: {q.options[q.correct]}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* BUTTONS */}
+        <div className="mt-8 space-y-4">
           <Button
             onClick={onRetry}
             className="w-full bg-[#5227FF] hover:bg-[#5227FF]/90 text-white h-12 rounded-xl"
           >
             <RotateCcw className="w-4 h-4 mr-2" /> Retry Quiz
           </Button>
+
           <Link to="/subjects">
             <Button
               variant="outline"
@@ -79,45 +121,46 @@ const Results = ({ score, total, onRetry }) => {
   );
 };
 
-// --- Main Player Component ---
+/* -------------------------------------------------------
+   MAIN QUIZ COMPONENT 
+--------------------------------------------------------*/
 export default function MyQuizApp() {
-  const { chapterId } = useParams(); // Get "os", "algorithm", etc.
+  const { chapterId } = useParams();
+  const { getQuestionsByChapter, submitAnswer, getUserAnswer } = useQuestions();
 
-  // HOOK: Get logic from Context
-  const { getQuestionsByChapter, submitAnswer } = useQuestions();
-
-  // Load questions for this specific chapter
   const questions = getQuestionsByChapter(chapterId);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Reset state if user switches chapters directly
+  /* RESET ON CHAPTER CHANGE */
   useEffect(() => {
     setCurrentQuestionIndex(0);
-    setScore(0);
-    setIsFinished(false);
     setSelectedOption(null);
     setShowFeedback(false);
+    setIsFinished(false);
+    setScore(0);
   }, [chapterId]);
 
-  // --- Logic: Handle User Selection ---
-  const handleAnswer = (index) => {
-    if (showFeedback) return; // Prevent double clicks
+  /* HANDLE ANSWER */
+  const handleAnswer = (optionIndex) => {
+    if (showFeedback) return;
 
     const currentQ = questions[currentQuestionIndex];
-    setSelectedOption(index);
+
+    setSelectedOption(optionIndex);
     setShowFeedback(true);
 
-    // 1. Calculate Score for this session
-    if (index === currentQ.correct) {
+    // Save to storage
+    submitAnswer(chapterId, currentQ.id, optionIndex);
+
+    // Score
+    if (optionIndex === currentQ.correct) {
       setScore((prev) => prev + 1);
     }
-
-    // 2. CRITICAL: Save answer to Context (LocalStorage)
-    submitAnswer(chapterId, currentQ.id, index);
   };
 
   const handleNext = () => {
@@ -129,25 +172,22 @@ export default function MyQuizApp() {
       setIsFinished(true);
     }
   };
-  const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex((prev) => prev - 1);
-      setSelectedOption(null);
-      setShowFeedback(true);
-    }
-  };
-  // Render Results if finished
+
+  /* FINISHED VIEW */
   if (isFinished) {
     return (
       <Results
         score={score}
         total={questions.length}
+        questions={questions}
+        chapterId={chapterId}
+        getUserAnswer={getUserAnswer}
         onRetry={() => window.location.reload()}
       />
     );
   }
 
-  // Handle Empty State (e.g. invalid chapter ID)
+  /* INVALID CHAPTER */
   if (!questions || questions.length === 0) {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center text-white">
@@ -170,40 +210,36 @@ export default function MyQuizApp() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-6 flex items-center justify-center">
       <div className="max-w-3xl w-full space-y-6">
-        {/* Top Bar: Breadcrumbs & Timer */}
+
+        {/* HEADER */}
         <div className="flex items-center justify-between text-slate-400">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#B19EEF]/10 border border-[#B19EEF]/20 flex items-center justify-center text-[#B19EEF]">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">
-                Quiz
-              </p>
-              <h1 className="text-white font-bold capitalize leading-none">
-                {chapterId}
-              </h1>
+              <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Quiz</p>
+              <h1 className="text-white font-bold capitalize leading-none">{chapterId}</h1>
             </div>
           </div>
+
           <div className="flex items-center gap-2 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700 backdrop-blur-md">
             <Timer className="w-4 h-4 text-[#B19EEF]" />
             <span className="text-sm font-mono text-slate-200">
-              {currentQuestionIndex + 1}{" "}
-              <span className="text-slate-500">/</span> {questions.length}
+              {currentQuestionIndex + 1} <span className="text-slate-500">/</span> {questions.length}
             </span>
           </div>
         </div>
 
-        {/* Main Game Card */}
+        {/* QUESTION CARD */}
         <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/5">
-          {/* Progress Bar */}
+
+          {/* PROGRESS BAR */}
           <div className="h-1.5 w-full bg-slate-900/50">
             <div
               className="h-full bg-gradient-to-r from-[#B19EEF] to-[#5227FF] transition-all duration-500 ease-out"
               style={{
-                width: `${
-                  ((currentQuestionIndex + 1) / questions.length) * 100
-                }%`,
+                width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
               }}
             />
           </div>
@@ -233,10 +269,6 @@ export default function MyQuizApp() {
                     styleClass =
                       "opacity-40 bg-slate-900/20 border-slate-800 text-slate-600";
                   }
-                } else if (selectedOption === index) {
-                  styleClass =
-                    "bg-[#5227FF]/20 border-[#5227FF] text-white shadow-[0_0_15px_rgba(82,39,255,0.1)]";
-                  indicatorClass = "bg-[#5227FF] text-white";
                 }
 
                 return (
@@ -247,16 +279,12 @@ export default function MyQuizApp() {
                     className={`w-full flex items-center p-4 rounded-xl border-2 transition-all duration-200 group text-left relative overflow-hidden ${styleClass}`}
                   >
                     <span
-                      className={`
-                                    w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold mr-4 transition-colors z-10
-                                    ${indicatorClass}
-                                `}
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold mr-4 transition-colors z-10 ${indicatorClass}`}
                     >
                       {optionLabels[index]}
                     </span>
-                    <span className="font-medium text-lg flex-1 z-10">
-                      {option}
-                    </span>
+                    <span className="font-medium text-lg flex-1 z-10">{option}</span>
+
                     {showFeedback && index === currentQ.correct && (
                       <CheckCircle2 className="w-6 h-6 text-emerald-500 z-10" />
                     )}
@@ -271,7 +299,7 @@ export default function MyQuizApp() {
             </div>
           </div>
 
-          {/* Explanation Footer */}
+          {/* FEEDBACK */}
           {showFeedback && (
             <div className="bg-slate-900/80 border-t border-slate-800/50 p-6 md:px-10 md:py-8 animate-in slide-in-from-bottom-4 fade-in duration-300">
               <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
@@ -292,29 +320,20 @@ export default function MyQuizApp() {
                     {currentQ.explanation}
                   </p>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <Button
-                    onClick={handleNext}
-                    className="w-full md:w-auto whitespace-nowrap bg-white text-slate-950 hover:bg-slate-200 px-8 h-12 font-bold shadow-lg shadow-white/5 rounded-xl text-base"
-                  >
-                    {currentQuestionIndex + 1 < questions.length
-                      ? "Next Question"
-                      : "Finish Quiz"}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
+
+                <Button
+                  onClick={handleNext}
+                  className="w-full md:w-auto whitespace-nowrap bg-white text-slate-950 hover:bg-slate-200 px-8 h-12 font-bold shadow-lg shadow-white/5 rounded-xl text-base"
+                >
+                  {currentQuestionIndex + 1 < questions.length
+                    ? "Next Question"
+                    : "Finish Quiz"}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
               </div>
             </div>
           )}
         </div>
-        {currentQuestionIndex > 0 && (
-          <Button
-            onClick={handlePrevious}
-            className="w-full md:w-auto whitespace-nowrap bg-white text-slate-950 hover:bg-slate-200 px-8 h-12 font-bold shadow-lg shadow-white/5 rounded-xl text-base"
-          >
-            <ArrowLeft className="w-5 h-5 ml-2" /> Previous Question
-          </Button>
-        )}
       </div>
     </div>
   );
