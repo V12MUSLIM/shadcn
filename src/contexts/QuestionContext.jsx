@@ -9,20 +9,20 @@ export function QuestionProvider({ children }) {
   const [userAnswers, setUserAnswers] = useState(() => {
     // Initialize from LocalStorage if available
     try {
-        const saved = localStorage.getItem("quizApp_progress");
-        return saved ? JSON.parse(saved) : {};
+      const saved = localStorage.getItem("quizApp_progress");
+      return saved ? JSON.parse(saved) : {};
     } catch (e) {
-        console.error("Failed to load progress", e);
-        return {};
+      console.error("Failed to load progress", e);
+      return {};
     }
   });
 
   // 2. Save to LocalStorage whenever answers change
   useEffect(() => {
     try {
-        localStorage.setItem("quizApp_progress", JSON.stringify(userAnswers));
+      localStorage.setItem("quizApp_progress", JSON.stringify(userAnswers));
     } catch (e) {
-        console.error("Failed to save progress", e);
+      console.error("Failed to save progress", e);
     }
   }, [userAnswers]);
 
@@ -59,20 +59,20 @@ export function QuestionProvider({ children }) {
   const getQuestionStatus = (chapterId, questionId) => {
     const key = `${chapterId}-${questionId}`;
     const answer = userAnswers[key];
-    
+
     // If not answered yet
     if (answer === undefined) return { status: "unanswered", userAnswer: null };
 
     // Find the correct answer from DB
     const questions = getQuestionsByChapter(chapterId);
     const question = questions.find((q) => q.id === questionId);
-    
+
     if (!question) return { status: "error", userAnswer: null };
 
     const isCorrect = question.correct === answer;
-    return { 
-      status: isCorrect ? "correct" : "incorrect", 
-      userAnswer: answer 
+    return {
+      status: isCorrect ? "correct" : "incorrect",
+      userAnswer: answer,
     };
   };
 
@@ -83,14 +83,14 @@ export function QuestionProvider({ children }) {
     if (total === 0) return { total: 0, completed: 0, percentage: 0 };
 
     let completed = 0;
-    questions.forEach(q => {
-        if (userAnswers[`${chapterId}-${q.id}`] !== undefined) completed++;
+    questions.forEach((q) => {
+      if (userAnswers[`${chapterId}-${q.id}`] !== undefined) completed++;
     });
 
     return {
-        total,
-        completed,
-        percentage: Math.round((completed / total) * 100)
+      total,
+      completed,
+      percentage: Math.round((completed / total) * 100),
     };
   };
 
@@ -100,7 +100,7 @@ export function QuestionProvider({ children }) {
     let totalQuestions = 0;
     let completedQuestions = 0;
 
-    chapters.forEach(chapter => {
+    chapters.forEach((chapter) => {
       const progress = getChapterProgress(chapter.id);
       totalQuestions += progress.total;
       completedQuestions += progress.completed;
@@ -109,14 +109,21 @@ export function QuestionProvider({ children }) {
     return {
       total: totalQuestions,
       completed: completedQuestions,
-      percentage: totalQuestions > 0 ? Math.round((completedQuestions / totalQuestions) * 100) : 0
+      percentage:
+        totalQuestions > 0
+          ? Math.round((completedQuestions / totalQuestions) * 100)
+          : 0,
     };
   };
 
   // Reset all progress (Optional)
   const resetProgress = () => {
-      setUserAnswers({});
-      localStorage.removeItem("quizApp_progress");
+    setUserAnswers({});
+    localStorage.removeItem("quizApp_progress");
+  };
+  const getUserAnswer = (chapterId, questionId) => {
+    const key = `${chapterId}-${questionId}`;
+    return userAnswers[key];
   };
 
   const value = {
@@ -124,14 +131,15 @@ export function QuestionProvider({ children }) {
     getSubject,
     getChaptersBySubject,
     getSubjectProgress,
-    
+
     // Existing methods
     getQuestionsByChapter,
     submitAnswer,
     getQuestionStatus,
     getChapterProgress,
     resetProgress,
-    userAnswers // exposed just in case
+    userAnswers, // exposed just in case
+    getUserAnswer,
   };
 
   return (

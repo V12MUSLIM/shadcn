@@ -9,6 +9,7 @@ import Subjects from "./subjects";
 import ChapterDetail from "./ChapterDetail";
 import MyQuizApp from "./MyQuizApp";
 import SubjectDetails from "./SubjectDetails";
+import SubjectPdfs from "./SubjectPdfs";
 function App() {
   return (
     // Wrap the entire application with the Context Providers
@@ -34,7 +35,8 @@ function App() {
             {/* Fallback/Direct link for demo */}
 
             <Route path="/subject/:id" element={<SubjectDetails />} />
-            <Route path="pdf" element={<PdfViewer />} />
+            <Route path="/subject/:id/pdfs" element={<SubjectPdfs />} />
+            <Route path="/subject/:id/pdfs/:pdfId" element={<PdfViewer />} />
           </Route>
         </Routes>
       </QuestionProvider>

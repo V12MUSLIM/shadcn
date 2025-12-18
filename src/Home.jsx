@@ -14,11 +14,12 @@ import {
   Zap,
   TrendingUp,
   Award,
+  Book
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-4xl w-full space-y-8">
         {/* Header Section */}
         <div className="text-center space-y-4">
@@ -60,38 +61,13 @@ export default function Home() {
             </CardContent>
           </Card>
 
+      
           <Card className="border-slate-700 bg-slate-800/50 backdrop-blur hover:bg-slate-800/70 transition-all duration-300 hover:border-[#B19EEF]/50 group">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <CardTitle className="text-white text-2xl flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-[#B19EEF]" />
-                    View Results
-                  </CardTitle>
-                  <CardDescription className="text-slate-400">
-                    Check your previous quiz attempts and scores
-                  </CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Link to="/results">
-                <Button
-                  variant="outline"
-                  className="w-full border-slate-600 text-slate-200 hover:bg-slate-700 hover:text-white hover:border-[#B19EEF]/50 transition-all duration-300"
-                >
-                  View Results
-                  <BarChart3 className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-          <Card className="border-slate-700 bg-slate-800/50 backdrop-blur hover:bg-slate-800/70 transition-all duration-300 hover:border-[#B19EEF]/50 group">
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="space-y-2">
-                  <CardTitle className="text-white text-2xl flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-[#B19EEF]" />
+                    <Book  className="w-5 h-5 text-[#B19EEF]" />
                     View Pdfs
                   </CardTitle>
                   <CardDescription className="text-slate-400">
@@ -106,8 +82,8 @@ export default function Home() {
                   variant="outline"
                   className="w-full border-slate-600 text-slate-200 hover:bg-slate-700 hover:text-white hover:border-[#B19EEF]/50 transition-all duration-300"
                 >
-                  View Results
-                  <BarChart3 className="w-4 h-4 ml-2" />
+                  View Pdfs
+                  <Book className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </CardContent>

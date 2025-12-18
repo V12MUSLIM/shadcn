@@ -25,6 +25,14 @@ export const SUBJECTS_DATA = {
         description: "Virtual memory and paging techniques",
       },
     ],
+    pdfs: [
+      { id: "os-intro", title: "OS Introduction", file: "/OS Ch-1 V2.pdf" },
+      {
+        id: "os-scheduling",
+        title: "Scheduling",
+        file: "/pdfs/os-scheduling.pdf",
+      },
+    ],
   },
   algorithm: {
     id: "algorithm",
@@ -44,6 +52,23 @@ export const SUBJECTS_DATA = {
         description: "Merge sort, quick sort, and more",
       },
     ],
+    pdfs: [
+      {
+        id: "algo-sorting",
+        title: "Sorting Algorithms",
+        file: "/pdfs/algo-sorting.pdf",
+      },
+      {
+        id: "algo-search",
+        title: "Search Algorithms",
+        file: "/pdfs/algo-search.pdf",
+      },
+      {
+        id: "algo-complexity",
+        title: "Time Complexity",
+        file: "/pdfs/algo-complexity.pdf",
+      },
+    ],
   },
   "data-science": {
     id: "data-science",
@@ -56,6 +81,23 @@ export const SUBJECTS_DATA = {
         id: "ds-chapter-1",
         title: "Data Science Ch-1",
         description: "P-values and statistical significance",
+      },
+    ],
+    pdfs: [
+      {
+        id: "ds-stats",
+        title: "Statistical Methods",
+        file: "/pdfs/ds-stats.pdf",
+      },
+      {
+        id: "ds-visualization",
+        title: "Data Visualization",
+        file: "/pdfs/ds-visualization.pdf",
+      },
+      {
+        id: "ds-analysis",
+        title: "Data Analysis",
+        file: "/pdfs/ds-analysis.pdf",
       },
     ],
   },
@@ -72,6 +114,23 @@ export const SUBJECTS_DATA = {
         description: "Fundamental probability concepts",
       },
     ],
+    pdfs: [
+      {
+        id: "prob-basics",
+        title: "Probability Basics",
+        file: "/pdfs/prob-basics.pdf",
+      },
+      {
+        id: "prob-distributions",
+        title: "Probability Distributions",
+        file: "/pdfs/prob-distributions.pdf",
+      },
+      {
+        id: "prob-inference",
+        title: "Statistical Inference",
+        file: "/pdfs/prob-inference.pdf",
+      },
+    ],
   },
   ai: {
     id: "ai",
@@ -85,6 +144,11 @@ export const SUBJECTS_DATA = {
         title: "Neural Networks",
         description: "Fundamentals of neural networks",
       },
+    ],
+    pdfs: [
+      { id: "ai-nn", title: "Neural Networks", file: "/pdfs/ai-nn.pdf" },
+      { id: "ai-ml", title: "Machine Learning", file: "/pdfs/ai-ml.pdf" },
+      { id: "ai-deep", title: "Deep Learning", file: "/pdfs/ai-deep.pdf" },
     ],
   },
 };
