@@ -36,7 +36,7 @@ export default function Home() {
         </div>
 
         {/* Main Action Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
+       
           <Card className="border-slate-700 bg-slate-800/50 backdrop-blur hover:bg-slate-800/70 transition-all duration-300 hover:border-[#B19EEF]/50 group">
             <CardHeader>
               <div className="flex items-start justify-between">
@@ -60,35 +60,8 @@ export default function Home() {
               </Link>
             </CardContent>
           </Card>
-
+         
       
-          <Card className="border-slate-700 bg-slate-800/50 backdrop-blur hover:bg-slate-800/70 transition-all duration-300 hover:border-[#B19EEF]/50 group">
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <div className="space-y-2">
-                  <CardTitle className="text-white text-2xl flex items-center gap-2">
-                    <Book  className="w-5 h-5 text-[#B19EEF]" />
-                    View Pdfs
-                  </CardTitle>
-                  <CardDescription className="text-slate-400">
-                    View all pdfs
-                  </CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Link to="/pdf">
-                <Button
-                  variant="outline"
-                  className="w-full border-slate-600 text-slate-200 hover:bg-slate-700 hover:text-white hover:border-[#B19EEF]/50 transition-all duration-300"
-                >
-                  View Pdfs
-                  <Book className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Features Card */}
         <Card className="border-slate-700 bg-slate-800/50 backdrop-blur">

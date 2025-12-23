@@ -55,18 +55,18 @@ export const SUBJECTS_DATA = {
     pdfs: [
       {
         id: "algo-sorting",
-        title: "Sorting Algorithms",
-        file: "/pdfs/algo-sorting.pdf",
+        title: "Algorithms 1",
+        file: "/Algorithms 1.pdf",
       },
       {
         id: "algo-search",
-        title: "Search Algorithms",
-        file: "/pdfs/algo-search.pdf",
+        title: "Algorithms 2 CH2",
+        file: "/Algorithms 2.pdf",
       },
       {
         id: "algo-complexity",
-        title: "Time Complexity",
-        file: "/pdfs/algo-complexity.pdf",
+        title: "Algorithms 3 CH2",
+        file: "/Algorithms 3.pdf",
       },
     ],
   },

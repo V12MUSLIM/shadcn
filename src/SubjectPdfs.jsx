@@ -22,7 +22,7 @@ export default function SubjectPdfs() {
   const pdfs = subject.pdfs || [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-6">
+    <div className="min-h-screenp-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="text-white">
           <h1 className="text-3xl font-bold">{subject.title} — PDFs</h1>

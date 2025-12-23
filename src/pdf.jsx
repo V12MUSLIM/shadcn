@@ -179,7 +179,7 @@ export default function PdfViewer() {
       ref={containerRef}
       className={`w-full ${
         isFullscreen ? "fixed inset-0 flex flex-col" : "min-h-screen"
-      } bg-gradient-to-br from-slate-900 to-slate-800 text-white ${
+      }  text-white ${
         !isFullscreen && "py-4 md:py-6"
       }`}
     >
