@@ -1,55 +1,374 @@
-
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { useQuestions } from "./contexts/QuestionContext";
-import { Download } from "lucide-react";
-export default function SubjectPdfs() {
+import { 
+  Download, 
+  ArrowLeft, 
+  FileText, 
+  Eye, 
+  Sparkles,
+  FolderOpen,
+  ExternalLink
+} from "lucide-react";
+import gsap from "gsap";
+
+export default function ModernSubjectPdfs() {
   const { id } = useParams();
   const { getSubject } = useQuestions();
   const subject = getSubject(id);
 
+  const headerRef = useRef(null);
+  const cardsRef = useRef([]);
+  const floatingElements = useRef([]);
+  const breadcrumbRef = useRef(null);
+  const emptyStateRef = useRef(null);
+
+  useEffect(() => {
+    if (!subject) return;
+
+    // Breadcrumb animation
+    if (breadcrumbRef.current) {
+      gsap.fromTo(
+        breadcrumbRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
+      );
+    }
+
+    // Header animation
+    if (headerRef.current) {
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+      );
+    }
+
+    // Floating background elements
+    floatingElements.current.forEach((el, i) => {
+      if (el) {
+        gsap.to(el, {
+          y: "random(-40, 40)",
+          x: "random(-40, 40)",
+          rotation: "random(-20, 20)",
+          duration: "random(5, 8)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: i * 0.3,
+        });
+      }
+    });
+
+    // Cards stagger animation
+    if (cardsRef.current.length > 0) {
+      gsap.fromTo(
+        cardsRef.current.filter(Boolean),
+        { 
+          opacity: 0, 
+          y: 50,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.15,
+          duration: 0.7,
+          ease: "back.out(1.4)",
+          delay: 0.5,
+        }
+      );
+    }
+
+    // Empty state animation
+    if (emptyStateRef.current) {
+      gsap.fromTo(
+        emptyStateRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.4)", delay: 0.5 }
+      );
+    }
+
+    // Card hover effects
+    cardsRef.current.forEach((card) => {
+      if (card) {
+        const handleMouseEnter = () => {
+          gsap.to(card, {
+            y: -8,
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        };
+
+        const handleMouseLeave = () => {
+          gsap.to(card, {
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        };
+
+        card.addEventListener("mouseenter", handleMouseEnter);
+        card.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+          card.removeEventListener("mouseenter", handleMouseEnter);
+          card.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      }
+    });
+  }, [subject]);
+
   if (!subject) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        <div className="text-center">
-          <h2 className="text-xl font-bold">Subject not found</h2>
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(177,158,239,0.1),transparent_50%)]" />
+        <div className="text-center relative z-10 space-y-6">
+          <div className="w-20 h-20 rounded-full bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 flex items-center justify-center mx-auto">
+            <FolderOpen className="w-10 h-10 text-slate-500" />
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold mb-2">Subject Not Found</h2>
+            <p className="text-slate-400 mb-6">The subject you're looking for doesn't exist.</p>
+            <Link to="/subjects">
+              <Button className="bg-gradient-to-r from-[#B19EEF] to-[#5227FF] hover:from-[#9f89e3] hover:to-[#4018dd] text-white px-6 h-12 font-semibold rounded-xl shadow-lg shadow-[#B19EEF]/30 transition-all duration-300 hover:scale-105">
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Back to Subjects
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 
   const pdfs = subject.pdfs || [];
+  const Icon = subject.icon;
 
   return (
-    <div className="min-h-screenp-6">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="text-white">
-          <h1 className="text-3xl font-bold">{subject.title} — PDFs</h1>
-          <p className="text-slate-400">{subject.description}</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          ref={(el) => (floatingElements.current[0] = el)}
+          className="absolute top-20 left-10 w-96 h-96 rounded-full blur-3xl"
+          style={{ background: `${subject.color}15` }}
+        />
+        <div
+          ref={(el) => (floatingElements.current[1] = el)}
+          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#5227FF]/10 rounded-full blur-3xl"
+        />
+        <div
+          ref={(el) => (floatingElements.current[2] = el)}
+          className="absolute top-1/2 left-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+        />
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {pdfs.map((pdf) => (
-            <Card key={pdf.id} className="bg-slate-800/50 border-slate-700">
-              <CardHeader>
-                <CardTitle className="text-white">{pdf.title}</CardTitle>
-                <CardDescription className="text-slate-400">PDF</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2">
-                  <Link to={`/subject/${id}/pdfs/${pdf.id}`}>
-                    <Button className="bg-[#5227FF] text-white">Open</Button>
-                  </Link>
-                  <a href={pdf.file} download className="ml-2">
-                    <Button className="bg-slate-300" > <Download/> Download</Button>
-                  </a>
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+
+      <div className="relative z-10 p-6 md:p-8">
+        <div className="max-w-6xl mx-auto space-y-8">
+          {/* Breadcrumb */}
+          <div ref={breadcrumbRef}>
+            <Link to="/subjects">
+              <Button
+                variant="ghost"
+                className="text-slate-400 hover:text-white hover:bg-slate-800/50 backdrop-blur-sm rounded-xl transition-all duration-300"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Subjects
+              </Button>
+            </Link>
+          </div>
+
+          {/* Header Section */}
+          <div ref={headerRef} className="space-y-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+              {/* Subject Icon */}
+              <div
+                className="w-20 h-20 rounded-3xl flex items-center justify-center border-2 shadow-2xl"
+                style={{
+                  backgroundColor: `${subject.color}20`,
+                  borderColor: `${subject.color}40`,
+                  boxShadow: `0 20px 40px ${subject.color}30`,
+                }}
+              >
+                <Icon
+                  style={{ color: subject.color }}
+                  className="w-10 h-10"
+                />
+              </div>
+
+              {/* Title Section */}
+              <div className="flex-1 space-y-2">
+                <div className="flex items-center gap-3">
+                  <h1 className="text-4xl md:text-5xl font-bold text-white">
+                    {subject.title}
+                  </h1>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#B19EEF]/10 backdrop-blur-sm rounded-full border border-[#B19EEF]/20">
+                    <FileText className="w-4 h-4 text-[#B19EEF]" />
+                    <span className="text-sm font-semibold text-[#B19EEF]">
+                      {pdfs.length} PDF{pdfs.length !== 1 ? 's' : ''}
+                    </span>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-          {pdfs.length === 0 && (
-            <div className="text-slate-400">No PDFs available for this subject.</div>
+                <p className="text-xl text-slate-400">{subject.description}</p>
+              </div>
+            </div>
+
+            {/* Decorative divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+          </div>
+
+          {/* PDF Cards Grid */}
+          {pdfs.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
+              {pdfs.map((pdf, index) => (
+                <div
+                  key={pdf.id}
+                  ref={(el) => (cardsRef.current[index] = el)}
+                  className="group"
+                >
+                  <Card
+                    className="bg-slate-800/30 backdrop-blur-2xl border-slate-700/50 hover:bg-slate-800/40 transition-all duration-500 h-full overflow-hidden relative"
+                    style={{
+                      backdropFilter: "blur(20px) saturate(180%)",
+                      WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                    }}
+                  >
+                    {/* Top accent line */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-1 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                      style={{
+                        background: `linear-gradient(90deg, ${subject.color}, transparent)`,
+                      }}
+                    />
+
+                    {/* Gradient overlay on hover */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        background: `radial-gradient(circle at top right, ${subject.color}10, transparent 70%)`,
+                      }}
+                    />
+
+                    <CardHeader className="relative z-10 space-y-4">
+                      {/* PDF Icon */}
+                      <div className="flex items-start justify-between">
+                        <div
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center border shadow-lg transform group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300"
+                          style={{
+                            backgroundColor: `${subject.color}15`,
+                            borderColor: `${subject.color}30`,
+                            boxShadow: `0 8px 16px ${subject.color}20`,
+                          }}
+                        >
+                          <FileText
+                            style={{ color: subject.color }}
+                            className="w-7 h-7"
+                          />
+                        </div>
+                        <Sparkles className="w-5 h-5 text-slate-600 group-hover:text-[#B19EEF] transition-colors duration-300" />
+                      </div>
+
+                      {/* Title */}
+                      <div>
+                        <CardTitle className="text-white text-xl font-bold group-hover:text-[#B19EEF] transition-colors duration-300 line-clamp-2">
+                          {pdf.title}
+                        </CardTitle>
+                        <CardDescription className="text-slate-500 text-sm mt-2">
+                          PDF Document
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+
+                    <CardContent className="relative z-10 space-y-3">
+                      {/* Action Buttons */}
+                      <div className="flex gap-3">
+                        <Link to={`/subject/${id}/pdfs/${pdf.id}`} className="flex-1">
+                          <Button
+                            className="w-full text-white backdrop-blur-sm transition-all duration-300 group/btn h-11 rounded-xl font-semibold shadow-lg hover:shadow-xl"
+                            style={{
+                              background: `linear-gradient(135deg, ${subject.color}, ${subject.color}dd)`,
+                              backdropFilter: "blur(10px)",
+                              WebkitBackdropFilter: "blur(10px)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = "translateY(-2px)";
+                              e.currentTarget.style.boxShadow = `0 12px 24px ${subject.color}40`;
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                          >
+                            <Eye className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
+                            Open
+                          </Button>
+                        </Link>
+
+                        <a href={pdf.file} download>
+                          <Button
+                            className="bg-slate-700/50 hover:bg-slate-700 text-white backdrop-blur-sm border border-slate-600/50 hover:border-slate-500 transition-all duration-300 group/btn h-11 rounded-xl font-semibold shadow-lg hover:shadow-xl px-4"
+                            style={{
+                              backdropFilter: "blur(10px)",
+                              WebkitBackdropFilter: "blur(10px)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = "translateY(-2px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                          >
+                            <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
+                          </Button>
+                        </a>
+                      </div>
+                    </CardContent>
+
+                    {/* Bottom glow effect */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-2xl"
+                      style={{
+                        background: `linear-gradient(to top, ${subject.color}15, transparent)`,
+                      }}
+                    />
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Empty State */
+            <div
+              ref={emptyStateRef}
+              className="flex flex-col items-center justify-center py-20 px-6"
+            >
+              <div className="bg-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-12 max-w-md w-full text-center space-y-6">
+                <div className="w-24 h-24 rounded-full bg-slate-700/30 backdrop-blur-sm flex items-center justify-center mx-auto border border-slate-600/50">
+                  <FolderOpen className="w-12 h-12 text-slate-500" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold text-white">No PDFs Available</h3>
+                  <p className="text-slate-400 leading-relaxed">
+                    There are no PDF documents available for {subject.title} at the moment.
+                  </p>
+                </div>
+                <Link to="/subjects">
+                  <Button
+                    className="bg-gradient-to-r from-[#B19EEF] to-[#5227FF] hover:from-[#9f89e3] hover:to-[#4018dd] text-white px-6 h-12 font-semibold rounded-xl shadow-lg shadow-[#B19EEF]/30 transition-all duration-300 hover:scale-105"
+                  >
+                    <ArrowLeft className="w-5 h-5 mr-2" />
+                    Browse Other Subjects
+                  </Button>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
       </div>

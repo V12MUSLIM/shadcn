@@ -24,6 +24,11 @@ export const SUBJECTS_DATA = {
         title: "OS Ch-3",
         description: "Virtual memory and paging techniques",
       },
+      {
+        id: "os-chapter-1.1",
+        title: "OS Ch-1 with Essay Questions",
+        description: "Virtual memory and paging techniques",
+      },
     ],
     pdfs: [
       { id: "os-intro", title: "OS Introduction", file: "/OS Ch-1 V2.pdf" },
@@ -49,6 +54,11 @@ export const SUBJECTS_DATA = {
       {
         id: "algo-chapter-2",
         title: "Algorithm Ch-2",
+        description: "Merge sort, quick sort, and more",
+      },
+      {
+        id: "algo-chapter-1-0.2",
+        title: "Algorithm Ch-1 V2",
         description: "Merge sort, quick sort, and more",
       },
     ],
@@ -1376,788 +1386,417 @@ export const QUESTIONS_DB = {
         "Running a small or low-value task on a separate core can waste resources and reduce performance.",
     },
   ],
-  "algo-chapter-1": [
-    {
-      id: 1,
-      question:
-        "Which of the following is NOT a required characteristic of an algorithm?",
-      options: ["Definiteness", "Finiteness", "Recursiveness", "Effectiveness"],
-      correct: 2,
-      explanation:
-        "The five essential characteristics of an algorithm are Input, Output, Definiteness, Finiteness, and Effectiveness. Recursiveness is not a required property.",
-    },
-    {
-      id: 2,
-      question:
-        "What is the primary advantage of using pseudocode over natural language descriptions?",
-      options: [
-        "It can be executed directly by a computer",
-        "It is completely unambiguous",
-        "It focuses on logic while abstracting away programming details",
-        "It is easier for beginners to understand",
-      ],
-      correct: 2,
-      explanation:
-        "Pseudocode uses a structured, programming-like style that focuses on logic without worrying about exact syntax, making it ideal for algorithm design.",
-    },
-    {
-      id: 3,
-      question:
-        "According to the definiteness property, what must be true about each step in an algorithm?",
-      options: [
-        "It must execute in constant time",
-        "It must be precisely and clearly defined with no ambiguity",
-        "It must use only basic arithmetic operations",
-        "It must be reversible",
-      ],
-      correct: 1,
-      explanation:
-        "Definiteness requires that each step must be precisely and clearly defined, leaving no ambiguity about what needs to be done.",
-    },
-    {
-      id: 4,
-      question:
-        "In a flowchart, which shape is used to represent decision points?",
-      options: ["Rectangle", "Oval", "Diamond", "Circle"],
-      correct: 2,
-      explanation:
-        "Diamonds are used for decisions in flowcharts, while ovals represent Start/End and rectangles represent processes.",
-    },
-    {
-      id: 5,
-      question:
-        "What is the fundamental difference between an algorithm and a program?",
-      options: [
-        "An algorithm is faster than a program",
-        "An algorithm is language-independent while a program is a specific implementation",
-        "A program is more efficient than an algorithm",
-        "An algorithm can only be written in pseudocode",
-      ],
-      correct: 1,
-      explanation:
-        "An algorithm is a conceptual, language-independent procedure, while a program is a specific implementation written in a programming language.",
-    },
-    {
-      id: 6,
-      question:
-        "Which algorithm design technique involves making locally optimal choices at each step?",
-      options: [
-        "Dynamic programming",
-        "Divide and conquer",
-        "Greedy algorithms",
-        "Brute force",
-      ],
-      correct: 2,
-      explanation:
-        "Greedy algorithms make locally optimal choices at each step with the hope of finding a global optimum.",
-    },
-    {
-      id: 7,
-      question:
-        "What is the purpose of proving correctness in the algorithm design process?",
-      options: [
-        "To determine time complexity",
-        "To translate pseudocode into code",
-        "To show that the algorithm works for all valid inputs",
-        "To optimize memory usage",
-      ],
-      correct: 2,
-      explanation:
-        "Proving correctness ensures that the algorithm works correctly for all valid inputs and helps avoid hidden logical errors.",
-    },
-    {
-      id: 8,
-      question: "Which step is the FIRST in the algorithm design process?",
-      options: [
-        "Testing and debugging",
-        "Understanding the problem",
-        "Analyzing complexity",
-        "Writing pseudocode",
-      ],
-      correct: 1,
-      explanation:
-        "You must first fully understand the problem before designing a solution.",
-    },
-    {
-      id: 9,
-      question:
-        "In the linear search algorithm, what is returned when the target value is not found?",
-      options: [
-        "The last element in the list",
-        "An error message",
-        '"Not found"',
-        "The index -1",
-      ],
-      correct: 2,
-      explanation:
-        'According to the linear search algorithm provided, if we reach the end of the list without finding the target, we return "Not found".',
-    },
-    {
-      id: 10,
-      question:
-        "What is the initial value of 'max' in the maximum-finding algorithm?",
-      options: [
-        "Zero",
-        "The last element in the list",
-        "Negative infinity",
-        "The first element in the list",
-      ],
-      correct: 3,
-      explanation:
-        "The algorithm initializes max to the first element in the list, then compares subsequent elements to update it.",
-    },
-    {
-      id: 11,
-      question:
-        "Which of the following best describes the 'finiteness' property of algorithms?",
-      options: [
-        "The algorithm must have a finite number of variables",
-        "The algorithm must terminate after a finite number of steps",
-        "The algorithm must process finite input",
-        "The algorithm must use finite memory",
-      ],
-      correct: 1,
-      explanation:
-        "Finiteness means the algorithm must terminate after a finite number of steps and should not go into an infinite loop.",
-    },
-    {
-      id: 12,
-      question:
-        "What is the main disadvantage of representing algorithms using flowcharts?",
-      options: [
-        "They cannot show decision points",
-        "They are difficult for beginners to understand",
-        "They can get messy for complex algorithms",
-        "They cannot represent loops",
-      ],
-      correct: 2,
-      explanation:
-        "While flowcharts are very intuitive and help visualize processes, they can become messy and difficult to manage for complex algorithms.",
-    },
-    {
-      id: 13,
-      question:
-        "In the factorial algorithm, what is the initial value of 'result'?",
-      options: ["0", "1", "n", "2"],
-      correct: 1,
-      explanation:
-        "The result is initialized to 1 because factorial is computed through multiplication, and 1 is the multiplicative identity.",
-    },
-    {
-      id: 14,
-      question:
-        "Which representation of an algorithm is most suitable for immediate execution by a computer?",
-      options: [
-        "Natural language description",
-        "Pseudocode",
-        "Flowchart",
-        "Programming code",
-      ],
-      correct: 3,
-      explanation:
-        "Programming code written in languages like Python, C++, or Java can be executed immediately by a computer, unlike other representations.",
-    },
-    {
-      id: 15,
-      question: "What does the 'effectiveness' property of algorithms require?",
-      options: [
-        "The algorithm must run in polynomial time",
-        "All operations must be basic enough to be carried out exactly and within finite time",
-        "The algorithm must use minimum memory",
-        "The algorithm must be parallelizable",
-      ],
-      correct: 1,
-      explanation:
-        "Effectiveness requires that all operations must be basic enough to be carried out exactly and within a finite amount of time.",
-    },
-    {
-      id: 16,
-      question:
-        "According to the document, what did people who followed algorithms perform calculations before electronic computers were called?",
-      options: ["Calculators", "Programmers", "Computers", "Mathematicians"],
-      correct: 2,
-      explanation:
-        "Historically, before electronic computers existed, people who followed algorithms to perform calculations were called 'computers'.",
-    },
-    {
-      id: 17,
-      question:
-        "Which core algorithm component involves arithmetic and logical operations?",
-      options: ["Input", "Computation", "Selection", "Iteration"],
-      correct: 1,
-      explanation:
-        "Computation is the core component that involves arithmetic and logical operations in an algorithm.",
-    },
-    {
-      id: 18,
-      question:
-        "In the algorithm design process, what should be determined during the 'Analyzing Efficiency' step?",
-      options: [
-        "The correctness of the algorithm",
-        "The programming language to use",
-        "Time and space complexity",
-        "The input format",
-      ],
-      correct: 2,
-      explanation:
-        "During efficiency analysis, we determine both time complexity (how running time grows) and space complexity (memory usage).",
-    },
-    {
-      id: 19,
-      question:
-        "What is the minimum number of outputs an algorithm must produce?",
-      options: [
-        "Zero",
-        "At least one",
-        "Exactly two",
-        "It depends on the problem",
-      ],
-      correct: 1,
-      explanation:
-        "According to the Output characteristic, an algorithm must produce at least one output (result).",
-    },
-    {
-      id: 20,
-      question:
-        "Which best practice suggests starting with pseudocode for design before moving to implementation?",
-      options: [
-        "Target Your Audience",
-        "Validate with Math",
-        "Start Simple",
-        "Use Tools",
-      ],
-      correct: 2,
-      explanation:
-        "The 'Start Simple' best practice recommends using pseudocode for design and then code for implementation.",
-    },
-    {
-      id: 21,
-      question:
-        "In the maximum-finding algorithm, when is the variable 'max' updated?",
-      options: [
-        "After every iteration",
-        "Only at the end of the algorithm",
-        "When an element x is greater than max",
-        "When an element x is less than max",
-      ],
-      correct: 2,
-      explanation:
-        "The max variable is updated only when we find an element x that is greater than the current max value.",
-    },
-    {
-      id: 22,
-      question:
-        "What is the primary purpose of the 'Iteration and Improvement' phase in algorithm design?",
-      options: [
-        "To write the initial pseudocode",
-        "To optimize performance and handle additional edge cases",
-        "To choose the programming language",
-        "To prove correctness",
-      ],
-      correct: 1,
-      explanation:
-        "Iteration and Improvement focuses on optimizing performance, handling additional edge cases, and making code cleaner after initial implementation and testing.",
-    },
-    {
-      id: 23,
-      question:
-        "According to the input characteristic, how many inputs can an algorithm receive?",
-      options: ["Exactly one", "At least one", "Zero or more", "At least two"],
-      correct: 2,
-      explanation:
-        "The Input characteristic states that the algorithm receives zero or more inputs from a specified set.",
-    },
-    {
-      id: 24,
-      question:
-        "Which representation method is described as being 'easy for beginners to understand' but potentially 'ambiguous'?",
-      options: [
-        "Pseudocode",
-        "Flowcharts",
-        "Natural language description",
-        "Programming code",
-      ],
-      correct: 2,
-      explanation:
-        "Natural language descriptions are easy for beginners but can be ambiguous or too informal for precise communication.",
-    },
-    {
-      id: 25,
-      question:
-        "In the factorial algorithm for n=5, what is the final value of 'result'?",
-      options: ["25", "15", "120", "720"],
-      correct: 2,
-      explanation:
-        "For n=5, the factorial is 1 × 2 × 3 × 4 × 5 = 120, as explicitly stated in the example.",
-    },
-    {
-      id: 26,
-      question:
-        "Which tool is recommended for creating flowcharts according to the best practices?",
-      options: [
-        "VisuAlgo",
-        "LeetCode Playground",
-        "Diagrams.net",
-        "Algorithm Visualizer",
-      ],
-      correct: 2,
-      explanation:
-        "Diagrams.net and Mermaid are specifically mentioned as tools for creating flowcharts.",
-    },
-    {
-      id: 27,
-      question:
-        "What type of loop structure is mentioned as part of the Iteration component in algorithms?",
-      options: [
-        "SWITCH and CASE",
-        "TRY and CATCH",
-        "WHILE and FOR",
-        "BEGIN and END",
-      ],
-      correct: 2,
-      explanation:
-        "The Iteration component specifically mentions WHILE and FOR as repetition structures.",
-    },
-    {
-      id: 28,
-      question:
-        "During the 'Developing a Strategy' step, which of the following is NOT listed as a technique to consider?",
-      options: [
-        "Greedy algorithms",
-        "Dynamic programming",
-        "Parallel processing",
-        "Divide and conquer",
-      ],
-      correct: 2,
-      explanation:
-        "The listed techniques are greedy algorithms, divide and conquer, dynamic programming, and brute force. Parallel processing is not mentioned.",
-    },
-    {
-      id: 29,
-      question:
-        "What should you identify when understanding the problem in the algorithm design process?",
-      options: [
-        "The best programming language to use",
-        "The fastest algorithm available",
-        "Inputs, required outputs, and constraints",
-        "The number of lines of code needed",
-      ],
-      correct: 2,
-      explanation:
-        "When understanding the problem, you must identify the inputs, required outputs, and any constraints.",
-    },
-    {
-      id: 30,
-      question:
-        "According to the document, which audience should primarily receive executable code as the algorithm representation?",
-      options: ["Exams and textbooks", "Researchers", "Developers", "Students"],
-      correct: 2,
-      explanation:
-        "The 'Target Your Audience' section specifies that developers should receive executable code, while exams/textbooks use pseudocode and researchers use math and pseudocode.",
-    },
-  ],
-  "algo-chapter-2": [
-    {
-      id: 1,
-      question:
-        "Which of the following best describes the goal of algorithm analysis?",
-      options: [
-        "To determine the exact execution time on a specific machine",
-        "To compare algorithms in terms of running time and memory usage",
-        "To minimize the number of lines of code",
-        "To ensure the algorithm always produces the correct output",
-      ],
-      correct: 1,
-      explanation:
-        "The primary goal of algorithm analysis is to compare algorithms objectively, focusing on efficiency in terms of running time and memory usage, rather than machine-specific execution times or code length.",
-    },
-    {
-      id: 2,
-      question:
-        "What does the input size generally refer to in algorithm analysis?",
-      options: [
-        "The number of variables used in the algorithm",
-        "The number of elements in the input",
-        "The number of function calls made",
-        "The total memory allocated",
-      ],
-      correct: 1,
-      explanation:
-        "Input size refers to the number of elements in the input, such as the size of an array or the number of vertices in a graph, and is crucial for expressing the running time as a function of input size.",
-    },
-    {
-      id: 3,
-      question:
-        "Which of the following is NOT a valid reason to use asymptotic analysis?",
-      options: [
-        "To compare algorithms independently of hardware",
-        "To determine the exact running time on a given machine",
-        "To focus on the growth rate of the algorithm",
-        "To abstract away from programming language details",
-      ],
-      correct: 1,
-      explanation:
-        "Asymptotic analysis is used to compare algorithms based on their growth rates, not to determine exact running times on specific machines, which depend on hardware and implementation details.",
-    },
-    {
-      id: 4,
-      question:
-        "Which rate of growth is dominant in the function ( f(n) = n^4 + 2n^2 + 100n + 500 )?",
-      options: ["n^4", "2n^2", "100n", "500"],
-      correct: 0,
-      explanation:
-        "For large values of n, the term with the highest degree, ( n^4 ), dominates the growth rate of the function, making it the most significant for asymptotic analysis.",
-    },
-    {
-      id: 5,
-      question:
-        "Which of the following asymptotic notations represents an upper bound?",
-      options: ["Ω", "Θ", "O", "o"],
-      correct: 2,
-      explanation:
-        "The notation O (Big-O) represents an upper bound on the growth rate of a function, indicating the worst-case scenario for an algorithm’s running time.",
-    },
-    {
-      id: 6,
-      question:
-        "Which type of algorithm analysis considers the input for which the algorithm performs the slowest?",
-      options: ["Best case", "Average case", "Worst case", "Optimal case"],
-      correct: 2,
-      explanation:
-        "Worst-case analysis examines the input that causes the algorithm to run the slowest, providing a guarantee on the maximum running time.",
-    },
-    {
-      id: 7,
-      question:
-        "What is the purpose of ignoring lower-order terms in asymptotic analysis?",
-      options: [
-        "To simplify the mathematical expression",
-        "To focus on the dominant term for large inputs",
-        "To reduce the number of operations",
-        "To make the algorithm more efficient",
-      ],
-      correct: 1,
-      explanation:
-        "Lower-order terms become insignificant as input size grows, so asymptotic analysis focuses on the dominant term to understand the algorithm’s growth rate.",
-    },
-    {
-      id: 8,
-      question: "Which step is the FIRST in the algorithm design process?",
-      options: [
-        "Testing and debugging",
-        "Understanding the problem",
-        "Analyzing complexity",
-        "Writing pseudocode",
-      ],
-      correct: 1,
-      explanation:
-        "You must first fully understand the problem before designing a solution.",
-    },
-    {
-      id: 9,
-      question:
-        "Which of the following is a common reason for multiple algorithms existing for the same problem?",
-      options: [
-        "All algorithms have identical efficiency",
-        "Different algorithms may optimize for different resources",
-        "Algorithms are only created for academic purposes",
-        "There is no way to compare algorithm efficiency",
-      ],
-      correct: 1,
-      explanation:
-        "Multiple algorithms exist because they may optimize for different resources, such as time, space, or developer effort, making some more suitable for specific situations.",
-    },
-    {
-      id: 10,
-      question: "What does the expression ( f(n) = O(g(n)) ) mean?",
-      options: [
-        "f(n) grows faster than g(n)",
-        "f(n) grows at the same rate as g(n)",
-        "f(n) grows no faster than g(n)",
-        "f(n) grows slower than g(n)",
-      ],
-      correct: 2,
-      explanation:
-        "The expression ( f(n) = O(g(n)) ) means that f(n) grows no faster than g(n), providing an upper bound on the growth rate of f(n).",
-    },
-    {
-      id: 11,
-      question: "Which asymptotic notation represents a tight bound?",
-      options: ["O", "Ω", "Θ", "o"],
-      correct: 2,
-      explanation:
-        "Θ (Theta) notation represents a tight bound, meaning the function is bounded both above and below by the same asymptotic growth rate.",
-    },
-    {
-      id: 12,
-      question:
-        "Which of the following is a typical input size for a sorting algorithm?",
-      options: [
-        "Number of comparisons made",
-        "Number of swaps performed",
-        "Number of elements in the array",
-        "Number of function calls",
-      ],
-      correct: 2,
-      explanation:
-        "For sorting algorithms, the input size is usually the number of elements in the array being sorted.",
-    },
-    {
-      id: 13,
-      question:
-        "What is the main advantage of expressing running time as a function of input size?",
-      options: [
-        "It allows comparison across different hardware platforms",
-        "It guarantees the algorithm will be correct",
-        "It ensures the algorithm uses minimal memory",
-        "It makes debugging easier",
-      ],
-      correct: 0,
-      explanation:
-        "Expressing running time as a function of input size allows for objective, hardware-independent comparison of algorithms.",
-    },
-    {
-      id: 14,
-      question: "Which of the following is true about the best-case analysis?",
-      options: [
-        "It represents the slowest possible running time",
-        "It represents the fastest possible running time",
-        "It represents the average running time",
-        "It is never used in practice",
-      ],
-      correct: 1,
-      explanation:
-        "Best-case analysis considers the input that allows the algorithm to run the fastest, representing the minimum possible running time.",
-    },
-    {
-      id: 15,
-      question:
-        "Which of the following is an example of a problem where the input size could be measured in bits?",
-      options: [
-        "Sorting an array",
-        "Searching a list",
-        "Factoring a large integer",
-        "Finding the shortest path in a graph",
-      ],
-      correct: 2,
-      explanation:
-        "For problems like factoring large integers, the input size is often measured in the number of bits in the binary representation of the input.",
-    },
-    {
-      id: 16,
-      question:
-        "Which of the following is a reason to perform average-case analysis?",
-      options: [
-        "To determine the worst possible running time",
-        "To determine the best possible running time",
-        "To predict the expected running time for random inputs",
-        "To minimize memory usage",
-      ],
-      correct: 2,
-      explanation:
-        "Average-case analysis predicts the expected running time when inputs are chosen randomly, providing insight into typical performance.",
-    },
-    {
-      id: 17,
-      question: "What does the notation ( f(n) = Omega(g(n)) ) indicate?",
-      options: [
-        "f(n) grows no faster than g(n)",
-        "f(n) grows at least as fast as g(n)",
-        "f(n) grows at the same rate as g(n)",
-        "f(n) grows slower than g(n)",
-      ],
-      correct: 1,
-      explanation:
-        "Ω (Omega) notation indicates a lower bound, meaning f(n) grows at least as fast as g(n).",
-    },
-    {
-      id: 18,
-      question:
-        "Which of the following is a valid reason to ignore constants in asymptotic analysis?",
-      options: [
-        "Constants are always negligible",
-        "Constants do not affect the growth rate for large inputs",
-        "Constants make the analysis more complicated",
-        "Constants are not part of the algorithm",
-      ],
-      correct: 1,
-      explanation:
-        "For large inputs, constants become insignificant compared to the growth rate, so they are typically ignored in asymptotic analysis.",
-    },
-    {
-      id: 19,
-      question:
-        "Which of the following best describes the purpose of pseudocode?",
-      options: [
-        "To provide a high-level description of an algorithm’s logic",
-        "To write code that can be directly executed",
-        "To minimize the number of variables used",
-        "To optimize the algorithm for speed",
-      ],
-      correct: 0,
-      explanation:
-        "Pseudocode provides a high-level, language-independent description of an algorithm’s logic, making it easier to understand and analyze.",
-    },
-    {
-      id: 20,
-      question:
-        "Which of the following is a characteristic of an efficient algorithm?",
-      options: [
-        "It always produces the correct output",
-        "It uses minimal memory and time for large inputs",
-        "It is written in the shortest possible code",
-        "It works for all possible inputs",
-      ],
-      correct: 1,
-      explanation:
-        "An efficient algorithm minimizes both time and memory usage, especially for large inputs, making it suitable for practical use.",
-    },
-    {
-      id: 21,
-      question:
-        "Which of the following is an example of a problem where the input size is the number of vertices in a graph?",
-      options: [
-        "Sorting an array",
-        "Searching a list",
-        "Finding the shortest path",
-        "Factoring an integer",
-      ],
-      correct: 2,
-      explanation:
-        "For graph problems like finding the shortest path, the input size is often the number of vertices in the graph.",
-    },
-    {
-      id: 22,
-      question: "Which of the following is true about the worst-case analysis?",
-      options: [
-        "It represents the fastest possible running time",
-        "It represents the slowest possible running time",
-        "It represents the average running time",
-        "It is always the same as the best case",
-      ],
-      correct: 1,
-      explanation:
-        "Worst-case analysis considers the input that causes the algorithm to run the slowest, providing a guarantee on the maximum running time.",
-    },
-    {
-      id: 23,
-      question:
-        "Which of the following is a reason to analyze the complexity of an algorithm?",
-      options: [
-        "To ensure the algorithm is bug-free",
-        "To compare different algorithms for the same problem",
-        "To minimize the number of lines of code",
-        "To make the algorithm easier to understand",
-      ],
-      correct: 1,
-      explanation:
-        "Analyzing complexity allows for objective comparison of different algorithms, helping to choose the most efficient one for a given problem.",
-    },
-    {
-      id: 24,
-      question:
-        "Which of the following is a typical input size for a matrix multiplication algorithm?",
-      options: [
-        "Number of rows",
-        "Number of columns",
-        "Number of elements in the matrix",
-        "Number of operations performed",
-      ],
-      correct: 2,
-      explanation:
-        "For matrix multiplication, the input size is typically the number of elements in the matrices being multiplied.",
-    },
-    {
-      id: 25,
-      question:
-        "Which of the following best describes the relationship between best, average, and worst-case running times?",
-      options: [
-        "Best case is always greater than worst case",
-        "Average case is always equal to best case",
-        "Worst case is always greater than or equal to average case",
-        "Average case is always greater than worst case",
-      ],
-      correct: 2,
-      explanation:
-        "The worst-case running time is always greater than or equal to the average-case running time, as it represents the maximum possible time for any input.",
-    },
-    {
-      id: 26,
-      question:
-        "Which of the following is a common application of asymptotic analysis?",
-      options: [
-        "Determining the exact running time on a specific machine",
-        "Comparing algorithms for efficiency",
-        "Writing pseudocode",
-        "Debugging algorithms",
-      ],
-      correct: 1,
-      explanation:
-        "Asymptotic analysis is primarily used to compare algorithms for efficiency, focusing on their growth rates rather than machine-specific details.",
-    },
-    {
-      id: 27,
-      question: "Which of the following is a reason to use Big-O notation?",
-      options: [
-        "To find the exact number of operations",
-        "To provide an upper bound on the running time",
-        "To minimize memory usage",
-        "To ensure the algorithm is correct",
-      ],
-      correct: 1,
-      explanation:
-        "Big-O notation provides an upper bound on the running time, indicating the worst-case scenario for an algorithm’s performance.",
-    },
-    {
-      id: 28,
-      question:
-        "Which of the following is a characteristic of a good algorithm design process?",
-      options: [
-        "Starting with pseudocode",
-        "Understanding the problem before designing a solution",
-        "Testing before understanding the problem",
-        "Writing code before analyzing complexity",
-      ],
-      correct: 1,
-      explanation:
-        "A good algorithm design process begins with a thorough understanding of the problem, ensuring that the solution is both correct and efficient.",
-    },
-    {
-      id: 29,
-      question:
-        "Which of the following is a typical input size for a polynomial evaluation algorithm?",
-      options: [
-        "Number of variables",
-        "Degree of the polynomial",
-        "Number of terms",
-        "Number of operations",
-      ],
-      correct: 1,
-      explanation:
-        "For polynomial evaluation, the input size is often the degree of the polynomial, which determines the number of terms to be evaluated.",
-    },
-    {
-      id: 30,
-      question:
-        "Which of the following is true about the average-case analysis?",
-      options: [
-        "It represents the worst possible running time",
-        "It represents the best possible running time",
-        "It represents the expected running time for random inputs",
-        "It is never used in practice",
-      ],
-      correct: 2,
-      explanation:
-        "Average-case analysis represents the expected running time when inputs are chosen randomly, providing insight into typical performance rather than best or worst cases.",
-    },
-    {
-      id: 31,
-      question: "هل معاذ ومصطفى اب اشرف عبط؟",
-      options: ["نعم", "لا"],
-      correct: 0,
-      explanation: "في حاجة غلط في دماغمهم الجماعة دول!",
-    },
-  ],
+"os-chapter-1.1": [
+  // Essay Questions (20 questions)
+  {
+    id: 1,
+    question: "Explain the difference between multiprogramming and time-sharing systems. How does each approach optimize system resource utilization?",
+    type: "essay",
+    explanation: "Multiprogramming keeps several jobs in memory simultaneously and switches between them when one job waits (e.g., for I/O), keeping the CPU busy. Time-sharing extends this concept by switching among jobs so frequently that users can interact with programs while running, providing the illusion of dedicated system access. Multiprogramming focuses on CPU utilization efficiency, while time-sharing emphasizes user interaction and response time (typically under one second)."
+  },
+  {
+    id: 2,
+    question: "Define the concept of dual-mode operation in operating systems and explain why it is critical for system protection. What are the two modes and how do they differ?",
+    type: "essay",
+    explanation: "Dual-mode operation distinguishes between user mode (mode bit = 1) and kernel mode (mode bit = 0). In kernel mode, the OS can execute privileged instructions and access all system resources. In user mode, applications run with restricted access. This separation prevents user programs from causing system-wide errors or malicious damage. When a user program needs OS services, it makes a system call, triggering a transition to kernel mode. The hardware enforces this by treating privileged instructions in user mode as illegal and trapping to the OS."
+  },
+  {
+    id: 3,
+    question: "Explain the bootstrap process from power-on to a fully operational system. Include the role of firmware, kernel loading, and system daemons.",
+    type: "essay",
+    explanation: "When powered on, the bootstrap program (stored in ROM/EEPROM firmware) initializes CPU registers, device controllers, and memory contents. It then locates the OS kernel and loads it into memory. Once loaded, the kernel starts providing services and loads system programs into memory as system processes/daemons. On UNIX, 'init' is the first system process that starts other daemons. After this phase completes, the system is fully booted and waits for events signaled by interrupts."
+  },
+  {
+    id: 4,
+    question: "Compare and contrast symmetric multiprocessing (SMP) and asymmetric multiprocessing. Which is more commonly used and why?",
+    type: "essay",
+    explanation: "In asymmetric multiprocessing, processors have specific assigned tasks with a boss-worker relationship where a boss processor controls the system and other processors follow instructions or handle predefined tasks. In symmetric multiprocessing (SMP), all processors are peers performing all OS tasks equally with no boss-worker relationship. SMP is more common because it's more efficient, provides better load balancing, and doesn't have a single point of control failure. However, SMP requires more complex coordination mechanisms."
+  },
+  {
+    id: 5,
+    question: "Define what constitutes a process versus a program. Explain the difference between single-threaded and multithreaded processes.",
+    type: "essay",
+    explanation: "A program is a passive entity—the contents of a file stored on disk containing instructions. A process is an active entity—a program loaded into memory and executing. A single-threaded process has one program counter specifying the next instruction to execute, requiring sequential execution. A multithreaded process has multiple program counters, each pointing to the next instruction for a given thread, allowing concurrent execution paths within the same process. The process is the unit of work in a system."
+  },
+  {
+    id: 6,
+    question: "Explain the memory hierarchy in computer systems. Why can't programs and data reside permanently in main memory?",
+    type: "essay",
+    explanation: "The memory hierarchy ranges from fast, volatile, expensive storage (registers, cache) to slower, non-volatile, cheaper storage (main memory, SSDs, magnetic disks, tapes). Programs and data cannot reside permanently in main memory for two reasons: (1) main memory is too small to store all needed programs and data permanently, and (2) main memory is volatile and loses contents when power is lost. Therefore, secondary storage (like magnetic disks) provides permanent storage, with programs loaded into memory only when needed for execution."
+  },
+  {
+    id: 7,
+    question: "Describe the interrupt mechanism in operating systems. Differentiate between hardware interrupts and software interrupts (traps), and explain how the CPU handles them.",
+    type: "essay",
+    explanation: "Interrupts signal event occurrences to the CPU. Hardware interrupts are triggered by devices sending signals through the system bus at any time. Software interrupts (traps/exceptions) are triggered by executing system calls or by errors like division by zero. When interrupted, the CPU stops current execution and transfers control to a fixed location containing the interrupt service routine's starting address. A table of pointers in low memory provides quick access to interrupt-specific handlers. After handling, control returns to the interrupted process."
+  },
+  {
+    id: 8,
+    question: "Explain the concept of virtual memory and its advantages. How does it differ from swapping?",
+    type: "essay",
+    explanation: "Virtual memory is a technique allowing execution of processes not completely in memory, enabling users to run programs larger than physical memory. It abstracts main memory into a large, uniform storage array, separating logical memory (user view) from physical memory, freeing programmers from memory-storage limitations. Swapping moves entire processes between main memory and disk to ensure reasonable response times. Virtual memory is more sophisticated, managing memory at the page level rather than entire processes, providing better memory utilization and flexibility."
+  },
+  {
+    id: 9,
+    question: "Define cache coherency and explain why it becomes a critical issue in multiprocessor systems. How does this problem extend to distributed environments?",
+    type: "essay",
+    explanation: "Cache coherency ensures that when data exists in multiple caches simultaneously, updates to that data in one cache are immediately reflected in all other caches. In multiprocessor systems, each CPU has a local cache, and if multiple CPUs access the same data (e.g., variable A), concurrent updates can create inconsistencies. This is typically a hardware issue. In distributed systems, the problem extends to file replicas on different computers—when one replica updates, all others must be synchronized quickly to maintain consistency across the network."
+  },
+  {
+    id: 10,
+    question: "Explain the difference between clustered systems and multicore systems. How do they differ in architecture and coupling?",
+    type: "essay",
+    explanation: "Multicore systems have multiple processing cores on a single chip, with each core having its own registers and possibly local cache, sharing some resources like main memory. They are tightly coupled. Clustered systems gather multiple complete computer systems (nodes) together, where each node may itself be a single processor or multicore system. Clustered systems are loosely coupled, connected via LAN, sharing storage. While multicore systems are always multiprocessor systems, not all multiprocessor systems are multicore—clusters being an example."
+  },
+  {
+    id: 11,
+    question: "Describe the role of Direct Memory Access (DMA) in I/O operations. Why is it necessary and what problem does it solve?",
+    type: "essay",
+    explanation: "DMA solves the high overhead problem of interrupt-driven I/O when moving bulk data. In interrupt-driven I/O, the CPU is interrupted for each small data transfer, which is inefficient for large data movements like disk I/O. With DMA, after setting up buffers, pointers, and counters, the device controller transfers entire data blocks directly between its buffer storage and memory without CPU intervention. The CPU is interrupted only once when the entire block transfer completes, freeing the CPU for other tasks during the transfer."
+  },
+  {
+    id: 12,
+    question: "Explain the concept of graceful degradation and fault tolerance in multiprocessor systems. How do they differ?",
+    type: "essay",
+    explanation: "Graceful degradation is the ability to continue providing service proportional to the level of surviving hardware after component failures—the system continues operating but with reduced capacity. Fault tolerance goes beyond this: the system can suffer failure of any single component and still continue full operation without service degradation. Fault-tolerant systems require mechanisms to detect, diagnose, and if possible correct failures. Graceful degradation accepts reduced performance, while fault tolerance maintains full functionality despite failures."
+  },
+  {
+    id: 13,
+    question: "Define the four main components of a computer system and explain how the operating system acts as an intermediary between them.",
+    type: "essay",
+    explanation: "The four components are: hardware (physical resources), operating system (resource manager), application programs (tools for solving user problems), and users. The OS acts as intermediary by managing hardware resources (CPU, memory, I/O devices) and providing services to application programs. It abstracts hardware complexity, provides a convenient interface for users and applications, acts as a resource allocator deciding which resources each program receives, and serves as a control program preventing errors and improper computer use."
+  },
+  {
+    id: 14,
+    question: "Explain the job pool concept in multiprogramming systems and describe the process of job scheduling and CPU scheduling.",
+    type: "essay",
+    explanation: "The job pool consists of all processes residing on disk awaiting main memory allocation. Since main memory is too small for all jobs, only a subset is kept in memory. Job scheduling involves the OS selecting which jobs from the pool to load into memory for execution. CPU scheduling occurs when multiple jobs in memory are ready to run simultaneously—the system must choose which job runs first. This two-level scheduling ensures efficient resource utilization: job scheduling manages memory allocation while CPU scheduling manages processor time distribution."
+  },
+  {
+    id: 15,
+    question: "Describe the instruction-execution cycle in a von Neumann architecture. Include the roles of registers and memory in this process.",
+    type: "essay",
+    explanation: "In a von Neumann architecture, the instruction-execution cycle: (1) fetches an instruction from memory and stores it in the instruction register, (2) decodes the instruction which may require fetching operands from memory into internal registers, (3) executes the instruction on the operands, and (4) may store the result back in memory. The load instruction moves data from memory to CPU registers, while store moves register contents to memory. The memory unit sees only a stream of addresses; it doesn't distinguish between instruction fetches and data operations."
+  },
+  {
+    id: 16,
+    question: "Explain the three main advantages of multiprocessor systems and provide examples of how each advantage manifests.",
+    type: "essay",
+    explanation: "The three main advantages are: (1) Increased throughput—by having multiple processors, more work is completed in less time, though not linearly due to overhead. (2) Economy of scale—sharing peripherals, mass storage, and power supplies among processors is more cost-effective than separate single-processor systems. (3) Increased reliability—if one processor fails, the system continues operating (graceful degradation or fault tolerance), unlike single-processor systems where one failure stops all operations. These advantages make multiprocessor systems valuable for mission-critical applications."
+  },
+  {
+    id: 17,
+    question: "Define what constitutes the kernel of an operating system and distinguish it from system programs and application programs.",
+    type: "essay",
+    explanation: "The kernel is the one program running at all times on the computer—the core of the operating system. System programs are associated with the OS but are not necessarily part of the kernel; they run as system processes/daemons providing services (like 'init' in UNIX). Application programs include all programs not associated with system operation—they're user-facing tools for specific tasks. The kernel provides fundamental services and resource management, system programs extend OS functionality, and application programs solve user-specific problems."
+  },
+  {
+    id: 18,
+    question: "Explain how the timer mechanism prevents user programs from monopolizing the CPU. How does this relate to system control and protection?",
+    type: "essay",
+    explanation: "A timer is set to interrupt the computer after a specified period (fixed or variable, e.g., 1/60 second to 1 second). It's implemented using a fixed-rate clock and counter—the OS sets the counter, and each clock tick decrements it. When the counter reaches zero, an interrupt occurs, returning control to the OS. This prevents user programs from getting stuck in infinite loops or failing to call system services. The timer ensures the OS maintains control over the CPU, enabling multiprogramming and time-sharing by forcing periodic context switches."
+  },
+  {
+    id: 19,
+    question: "Compare symmetric clustering and asymmetric clustering. Discuss the efficiency trade-offs and application requirements for each approach.",
+    type: "essay",
+    explanation: "In asymmetric clustering, one machine operates in hot-standby mode while another runs applications—the standby monitors the active server and takes over if it fails. In symmetric clustering, two or more hosts run applications simultaneously and monitor each other. Symmetric clustering is more efficient as it uses all available hardware, but applications must be written with parallelization techniques to divide work among nodes. Asymmetric clustering is simpler but wastes standby resources. The choice depends on application design capabilities and redundancy requirements."
+  },
+  {
+    id: 20,
+    question: "Explain the relationship between protection and security in operating systems. How do they differ in addressing system vulnerabilities?",
+    type: "essay",
+    explanation: "Protection is any mechanism controlling process or user access to system resources—it's about managing internal access rights and preventing processes from interfering with each other. Security defends the system from external and internal attacks beyond access control. A system can have adequate protection but still be insecure—for example, if authentication credentials are stolen, protected data can be compromised despite working file and memory protection. Protection focuses on access control mechanisms, while security encompasses broader defense against threats including authentication breaches, malware, and attacks."
+  },
+
+  // MCQ Questions (30 questions)
+  {
+    id: 21,
+    question: "Which storage type is volatile and loses its contents when power is turned off?",
+    options: ["Magnetic disk", "Main memory", "Solid-state disk", "NVRAM"],
+    correct: 1,
+    explanation: "Main memory (RAM) is volatile storage that loses its contents when power is lost. This is one reason why secondary storage like magnetic disks is necessary—to provide permanent storage for programs and data."
+  },
+  {
+    id: 22,
+    question: "What is the mode bit value when the system is operating in kernel mode?",
+    options: ["1", "0", "2", "-1"],
+    correct: 1,
+    explanation: "The mode bit is 0 for kernel mode and 1 for user mode. Kernel mode allows execution of privileged instructions and full system access, while user mode restricts these capabilities."
+  },
+  {
+    id: 23,
+    question: "Which of the following is NOT a responsibility of the operating system in process management?",
+    options: [
+      "Scheduling processes on CPUs",
+      "Creating and deleting processes",
+      "Compiling user programs",
+      "Providing mechanisms for process synchronization"
+    ],
+    correct: 2,
+    explanation: "Compiling user programs is the job of system programs (compilers), not the operating system itself. The OS handles process scheduling, creation/deletion, suspension/resumption, and synchronization mechanisms."
+  },
+  {
+    id: 24,
+    question: "In a von Neumann architecture, where is a fetched instruction initially stored?",
+    options: ["Cache memory", "Instruction register", "Main memory", "Program counter"],
+    correct: 1,
+    explanation: "The instruction-execution cycle first fetches an instruction from memory and stores it in the instruction register. The instruction is then decoded and executed from there."
+  },
+  {
+    id: 25,
+    question: "What type of interrupt is caused by division by zero?",
+    options: ["Hardware interrupt", "Trap or exception", "Timer interrupt", "I/O interrupt"],
+    correct: 1,
+    explanation: "Division by zero causes a trap (also called exception), which is a software-generated interrupt caused by an error or invalid operation, unlike hardware interrupts generated by devices."
+  },
+  {
+    id: 26,
+    question: "Which storage device is nonvolatile and faster than magnetic disks?",
+    options: ["Cache memory", "Main memory", "Solid-state disk", "Registers"],
+    correct: 2,
+    explanation: "Solid-state disks (SSDs) are nonvolatile, faster than magnetic disks, and don't lose data when power is off. They use technologies like flash memory or DRAM with battery backup."
+  },
+  {
+    id: 27,
+    question: "What is the first system process started in UNIX systems?",
+    options: ["kernel", "init", "bootstrap", "daemon"],
+    correct: 1,
+    explanation: "In UNIX, 'init' is the first system process that runs and is responsible for starting many other system daemons during the boot process."
+  },
+  {
+    id: 28,
+    question: "Where is the table of pointers to interrupt routines typically stored?",
+    options: ["High memory", "Low memory", "Cache", "Secondary storage"],
+    correct: 1,
+    explanation: "The interrupt vector table containing pointers to interrupt routines is stored in low memory (the first hundred or so locations) to provide fast access when interrupts occur."
+  },
+  {
+    id: 29,
+    question: "Which data structure uses the LIFO (Last In, First Out) principle?",
+    options: ["Queue", "Stack", "Linked list", "Binary tree"],
+    correct: 1,
+    explanation: "A stack uses LIFO principle—the last item pushed onto the stack is the first item popped off. Operating systems commonly use stacks for function calls."
+  },
+  {
+    id: 30,
+    question: "What is the typical response time requirement for time-sharing systems?",
+    options: ["Less than one minute", "Less than one second", "Less than one millisecond", "Less than one hour"],
+    correct: 1,
+    explanation: "Time-sharing systems require short response times, typically less than one second, to provide interactive user experiences where users can interact with programs while they run."
+  },
+  {
+    id: 31,
+    question: "Which of the following is NOT stored in firmware (ROM/EEPROM)?",
+    options: ["Bootstrap program", "Factory-installed smartphone programs", "User application data", "Basic initialization code"],
+    correct: 2,
+    explanation: "User application data is stored in rewritable memory or secondary storage, not firmware. Firmware contains the bootstrap program and static programs like factory-installed software that rarely change."
+  },
+  {
+    id: 32,
+    question: "What happens when a privileged instruction is attempted in user mode?",
+    options: [
+      "It executes normally",
+      "The hardware treats it as illegal and traps to the OS",
+      "The system crashes",
+      "It switches automatically to kernel mode"
+    ],
+    correct: 1,
+    explanation: "When a privileged instruction is attempted in user mode, the hardware does not execute it but treats it as illegal and traps to the operating system, which can then handle the violation appropriately."
+  },
+  {
+    id: 33,
+    question: "In a binary search tree, what is the relationship between parent and children?",
+    options: [
+      "Parent > both children",
+      "Left child ≤ Parent < Right child",
+      "Left child ≤ Right child",
+      "Right child ≤ Parent < Left child"
+    ],
+    correct: 1,
+    explanation: "A binary search tree requires the ordering: left child ≤ right child, where the left child is less than or equal to the parent, and the right child is greater than the parent."
+  },
+  {
+    id: 34,
+    question: "What does NVRAM stand for and what is its key characteristic?",
+    options: [
+      "Non-Volatile RAM with battery backup",
+      "Network Virtual RAM",
+      "New Version RAM",
+      "Non-Virtual Random Memory"
+    ],
+    correct: 0,
+    explanation: "NVRAM is Non-Volatile RAM—essentially DRAM with battery backup power, allowing it to retain data even when main power is lost, combining RAM speed with non-volatile storage properties."
+  },
+  {
+    id: 35,
+    question: "Which scheduling decision involves selecting jobs from the job pool to load into memory?",
+    options: ["CPU scheduling", "Job scheduling", "I/O scheduling", "Process scheduling"],
+    correct: 1,
+    explanation: "Job scheduling determines which jobs from the job pool on disk should be loaded into main memory for execution. CPU scheduling then decides which job in memory runs first."
+  },
+  {
+    id: 36,
+    question: "What is the main disadvantage of using a linked list compared to an array?",
+    options: [
+      "Cannot store varying-sized items",
+      "Difficult to insert/delete items",
+      "Performance for retrieving items is O(n)",
+      "Requires more complex programming"
+    ],
+    correct: 2,
+    explanation: "Retrieving a specified item in a linked list requires potentially traversing all n elements in the worst case, giving O(n) performance. Arrays allow direct access in O(1) time but are less flexible."
+  },
+  {
+    id: 37,
+    question: "MS-DOS lacked dual-mode operation because the Intel 8088 architecture:",
+    options: [
+      "Was too slow",
+      "Had no mode bit",
+      "Had too little memory",
+      "Couldn't handle interrupts"
+    ],
+    correct: 1,
+    explanation: "The Intel 8088 architecture had no mode bit and therefore no dual mode operation. This allowed user programs to potentially wipe out the OS or interfere with device operations, creating serious security shortcomings."
+  },
+  {
+    id: 38,
+    question: "Which instruction moves data from main memory to an internal CPU register?",
+    options: ["Store", "Load", "Fetch", "Push"],
+    correct: 1,
+    explanation: "The load instruction moves a byte or word from main memory to an internal register within the CPU. The store instruction does the opposite, moving register contents to main memory."
+  },
+  {
+    id: 39,
+    question: "What is the role of a device driver in the operating system?",
+    options: [
+      "To control physical device hardware directly",
+      "To provide a uniform interface between the OS and device controller",
+      "To manufacture device controllers",
+      "To allocate memory for devices"
+    ],
+    correct: 1,
+    explanation: "A device driver understands the specific device controller and provides the rest of the operating system with a uniform interface to the device, abstracting hardware-specific details."
+  },
+  {
+    id: 40,
+    question: "In a hash map, what problem occurs when two inputs produce the same hash value?",
+    options: ["Hash overflow", "Hash collision", "Hash conflict", "Hash error"],
+    correct: 1,
+    explanation: "A hash collision occurs when two different inputs produce the same hash value, linking to the same table location. This is typically resolved using a linked list at that location containing all items with the same hash value."
+  },
+  {
+    id: 41,
+    question: "What is caching based on the assumption of?",
+    options: [
+      "Data will never change",
+      "Data will be needed again soon",
+      "Memory is unlimited",
+      "CPU is faster than memory"
+    ],
+    correct: 1,
+    explanation: "Caching works on the principle that when information is used, it's copied to faster storage (cache) under the assumption it will be needed again soon, avoiding slower access to the original storage location."
+  },
+  {
+    id: 42,
+    question: "Which of the following is a characteristic of mobile computing devices?",
+    options: [
+      "High power consumption",
+      "Large physical size",
+      "Portable and lightweight",
+      "Limited connectivity"
+    ],
+    correct: 2,
+    explanation: "Mobile computing devices like smartphones and tablets are distinguished by being portable and lightweight, allowing computing on the go."
+  },
+  {
+    id: 43,
+    question: "In peer-to-peer systems, how are nodes distinguished?",
+    options: [
+      "Servers have more power than clients",
+      "All nodes are peers; each can be client or server",
+      "Clients cannot provide services",
+      "Servers cannot request services"
+    ],
+    correct: 1,
+    explanation: "In peer-to-peer systems, clients and servers are not distinguished—all nodes are considered peers and can act as either client or server depending on whether they're requesting or providing services."
+  },
+  {
+    id: 44,
+    question: "What does a bitmap represent in operating systems?",
+    options: [
+      "Graphical images",
+      "Status of n items using n binary digits",
+      "Memory addresses",
+      "CPU instructions"
+    ],
+    correct: 1,
+    explanation: "A bitmap is a string of n binary digits representing the status of n items. For example, it can indicate disk block availability where 0 means available and 1 means unavailable (or vice versa)."
+  },
+  {
+    id: 45,
+    question: "Which communication scheme allows different processes on different computers to exchange messages in network operating systems?",
+    options: [
+      "Shared memory",
+      "Direct access",
+      "Message passing",
+      "Pipe communication"
+    ],
+    correct: 2,
+    explanation: "Network operating systems provide a communication scheme (message passing) that allows different processes on different computers to exchange messages across the network."
+  },
+  {
+    id: 46,
+    question: "How many devices can typically be attached to a SCSI controller?",
+    options: ["Three or more", "Five or more", "Seven or more", "Ten or more"],
+    correct: 2,
+    explanation: "According to the text, seven or more devices can be attached to a small computer-systems interface (SCSI) controller."
+  },
+  {
+    id: 47,
+    question: "What data structure uses the FIFO (First In, First Out) principle?",
+    options: ["Stack", "Tree", "Queue", "Hash table"],
+    correct: 2,
+    explanation: "A queue uses FIFO principle—items are removed in the order they were inserted. Examples include print job queues and shoppers waiting in checkout lines."
+  },
+  {
+    id: 48,
+    question: "In a multicore system, what does each core typically have?",
+    options: [
+      "Only shared cache",
+      "Its own register set and local cache",
+      "Shared registers among all cores",
+      "No cache memory"
+    ],
+    correct: 1,
+    explanation: "In typical multicore designs, each core has its own register set and its own local cache. Some designs may also use shared cache or combinations of local and shared caches."
+  },
+  {
+    id: 49,
+    question: "What connects multiple systems in a clustered system?",
+    options: [
+      "System bus",
+      "Local-area network (LAN)",
+      "Direct cable",
+      "Wireless only"
+    ],
+    correct: 1,
+    explanation: "Clustered systems consist of multiple individual computer systems (nodes) that are closely linked via a local-area network (LAN) and typically share storage."
+  },
+  {
+    id: 50,
+    question: "Which of the following best describes a distributed system?",
+    options: [
+      "A single computer with multiple processors",
+      "Multiple programs on one computer",
+      "Physically separate networked computer systems",
+      "Virtual machines on one host"
+    ],
+    correct: 2,
+    explanation: "A distributed system is a collection of physically separate, possibly heterogeneous, computer systems that are networked to provide users with access to various resources maintained by the system."
+  }
+],
+
   "ds-chapter-1": [
     {
       id: 1,

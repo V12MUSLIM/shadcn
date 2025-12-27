@@ -84,7 +84,7 @@ export default function ChapterDetail() {
 
             <Link to={`/quiz/${id}/play`}>
                 <Button className="bg-[#5227FF] hover:bg-[#5227FF]/90 text-white px-8 h-12 text-lg shadow-lg shadow-[#5227FF]/20 border border-[#B19EEF]/20">
-                   {stats.completed > 0 ? "Resume Quiz" : "Start Quiz"}
+                   {stats.completed > 0 ? "Resume Quiz" : "Start Qui"}
                 </Button>
             </Link>
           </div>
