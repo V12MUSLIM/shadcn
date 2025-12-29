@@ -10,7 +10,7 @@ import ChapterDetail from "./ChapterDetail";
 import MyQuizApp from "./MyQuizApp";
 import SubjectDetails from "./SubjectDetails";
 import SubjectPdfs from "./SubjectPdfs";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 function App() {
   return (
     <>
