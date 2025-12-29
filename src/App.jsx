@@ -10,37 +10,40 @@ import ChapterDetail from "./ChapterDetail";
 import MyQuizApp from "./MyQuizApp";
 import SubjectDetails from "./SubjectDetails";
 import SubjectPdfs from "./SubjectPdfs";
+import { Analytics } from "@vercel/analytics/next"
 function App() {
   return (
-    // Wrap the entire application with the Context Providers
-    <ChapterProvider>
-      <QuestionProvider>
-        <Routes>
-          {/* Layout wraps all pages to give them the Sidebar/Navbar */}
-          <Route element={<Layout />}>
-            {/* 1. Home Page */}
-            <Route path="/" element={<Home />} />
+    <>
+      <ChapterProvider>
+        <QuestionProvider>
+          <Routes>
+            {/* Layout wraps all pages to give them the Sidebar/Navbar */}
+            <Route element={<Layout />}>
+              {/* 1. Home Page */}
+              <Route path="/" element={<Home />} />
 
-            {/* 2. The Subject Selection Grid */}
-            <Route path="/subjects" element={<Subjects />} />
+              {/* 2. The Subject Selection Grid */}
+              <Route path="/subjects" element={<Subjects />} />
 
-            {/* 3. The Dynamic Chapter Page (The List of Questions) */}
-            {/* The ":id" captures "os", "algorithm", etc. */}
-            <Route path="/chapter/:id" element={<ChapterDetail />} />
+              {/* 3. The Dynamic Chapter Page (The List of Questions) */}
+              {/* The ":id" captures "os", "algorithm", etc. */}
+              <Route path="/chapter/:id" element={<ChapterDetail />} />
 
-            {/* 4. The Actual Quiz Player */}
-            {/* Dynamic ID for subject */}
-            <Route path="/quiz/:chapterId" element={<MyQuizApp />} />
+              {/* 4. The Actual Quiz Player */}
+              {/* Dynamic ID for subject */}
+              <Route path="/quiz/:chapterId" element={<MyQuizApp />} />
 
-            {/* Fallback/Direct link for demo */}
+              {/* Fallback/Direct link for demo */}
 
-            <Route path="/subject/:id" element={<SubjectDetails />} />
-            <Route path="/subject/:id/pdfs" element={<SubjectPdfs />} />
-            <Route path="/subject/:id/pdfs/:pdfId" element={<PdfViewer />} />
-          </Route>
-        </Routes>
-      </QuestionProvider>
-    </ChapterProvider>
+              <Route path="/subject/:id" element={<SubjectDetails />} />
+              <Route path="/subject/:id/pdfs" element={<SubjectPdfs />} />
+              <Route path="/subject/:id/pdfs/:pdfId" element={<PdfViewer />} />
+            </Route>
+          </Routes>
+        </QuestionProvider>
+      </ChapterProvider>
+      <Analytics />
+    </>
   );
 }
 
