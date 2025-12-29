@@ -14,6 +14,7 @@ import { Analytics } from "@vercel/analytics/react"
 function App() {
   return (
     <>
+    <Analytics />
       <ChapterProvider>
         <QuestionProvider>
           <Routes>
@@ -42,7 +43,7 @@ function App() {
           </Routes>
         </QuestionProvider>
       </ChapterProvider>
-      <Analytics />
+      
     </>
   );
 }
